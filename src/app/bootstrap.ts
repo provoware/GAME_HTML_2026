@@ -8,6 +8,7 @@ export type BootstrapOptions = {
   readonly document: Document;
   readonly rootSelector?: string;
   readonly eventBus?: EventBus<AppEventMap>;
+  readonly diagnosticsEnabled?: boolean;
   readonly window?: Pick<Window, 'addEventListener'>;
 };
 
@@ -15,6 +16,7 @@ export function bootstrapApp({
   document,
   rootSelector = appConfig.defaultRootSelector,
   eventBus = createAppEventBus(),
+  diagnosticsEnabled = appConfig.diagnosticsEnabled,
   window,
 }: BootstrapOptions): HTMLElement {
   installErrorBoundary({ document, eventBus, window });
@@ -24,13 +26,13 @@ export function bootstrapApp({
     throw new Error(`App-Container ${rootSelector} wurde nicht gefunden.`);
   }
 
-  app.replaceChildren(createStartScreen(document));
+  app.replaceChildren(createStartScreen(document, diagnosticsEnabled));
   eventBus.emit('app:booted', { appName: appConfig.appName, version: appConfig.version });
 
   return app;
 }
 
-function createStartScreen(document: Document): HTMLElement {
+function createStartScreen(document: Document, diagnosticsEnabled: boolean): HTMLElement {
   const main = document.createElement('main');
   main.className = 'shell';
   main.id = 'main-content';
@@ -44,5 +46,25 @@ function createStartScreen(document: Document): HTMLElement {
 
   main.append(title, status);
 
+  if (diagnosticsEnabled) {
+    main.append(createDiagnosticsPanel(document));
+  }
+
   return main;
+}
+
+function createDiagnosticsPanel(document: Document): HTMLElement {
+  const panel = document.createElement('aside');
+  panel.setAttribute('aria-label', 'Diagnosemodus');
+  panel.dataset.diagnosticsPanel = 'true';
+
+  const headline = document.createElement('h2');
+  headline.textContent = 'Diagnosemodus';
+
+  const details = document.createElement('p');
+  details.textContent = 'Aktiv: Entwicklungsumgebung, Laufzeitfehler werden sichtbar gemeldet.';
+
+  panel.append(headline, details);
+
+  return panel;
 }
