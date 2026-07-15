@@ -5,7 +5,7 @@
 > Statuswerte: `[ ] offen`, `[-] in Arbeit`, `[x] erledigt`, `[!] blockiert`
 >
 > Fortschritt = erledigte Pflichtaufgaben / alle Pflichtaufgaben × 100  
-> Aktueller Implementierungsfortschritt: **3,0 %**
+> Aktueller Implementierungsfortschritt: **3,2 %**
 
 ---
 
@@ -25,7 +25,7 @@
 - [x] **GAME-0012** README-Grundstruktur anlegen.
 - [x] **GAME-0013** CHANGELOG anlegen.
 - [x] **GAME-0014** Lizenzentscheidung dokumentieren.
-- [ ] **GAME-0015** erste Build-, Lint- und Testpipeline erfolgreich ausführen.
+- [x] **GAME-0015** erste Build-, Lint- und Testpipeline erfolgreich ausführen.
 
 **Abnahme Phase 00:** `npm ci`, `npm run lint`, `npm run typecheck`, `npm test`, `npm run build` funktionieren.
 
