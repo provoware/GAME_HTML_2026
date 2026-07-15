@@ -95,4 +95,5 @@ Das Projekt zielt auf:
 
 ## Lizenz
 
-Die Lizenzentscheidung ist noch offen und wird über `TODO.md` als eigene Aufgabe dokumentiert.
+Dieses Projekt ist proprietär. Alle Rechte bleiben vorbehalten; Nutzung, Kopie,
+Änderung oder Weitergabe benötigen eine vorherige schriftliche Erlaubnis.
