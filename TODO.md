@@ -5,7 +5,7 @@
 > Statuswerte: `[ ] offen`, `[-] in Arbeit`, `[x] erledigt`, `[!] blockiert`
 >
 > Fortschritt = erledigte Pflichtaufgaben / alle Pflichtaufgaben × 100  
-> Aktueller Implementierungsfortschritt: **1,3 %**
+> Aktueller Implementierungsfortschritt: **1,5 %**
 
 ---
 
@@ -17,7 +17,7 @@
 - [x] **GAME-0004** Node-LTS-Version festlegen und dokumentieren.
 - [x] **GAME-0005** `package.json` mit Scripts und Metadaten anlegen.
 - [x] **GAME-0006** Vite-Projektstruktur erzeugen.
-- [ ] **GAME-0007** TypeScript im Strict-Modus konfigurieren.
+- [x] **GAME-0007** TypeScript im Strict-Modus konfigurieren.
 - [ ] **GAME-0008** ESLint konfigurieren.
 - [ ] **GAME-0009** Prettier integrieren.
 - [ ] **GAME-0010** Vitest konfigurieren.
