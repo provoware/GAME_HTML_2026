@@ -12,9 +12,9 @@ Das Format orientiert sich an Keep a Changelog. Die Versionsführung folgt SemVe
 - Verbindliche Projektsteuerung über `AGENTS.md` und `TODO.md`.
 - README-Grundstruktur mit Zielbild, Technik, lokaler Entwicklung, Qualitäts- und Sicherheitsgrundsätzen.
 - Minimale Vite-Anwendung als Ausgangspunkt für die modulare Implementierung.
+- Proprietäre Lizenzentscheidung mit vorbehaltenen Rechten dokumentiert.
 
 ### Noch offen
 
-- Lizenzentscheidung.
 - Erste vollständig erfolgreiche Build-, Lint- und Testpipeline.
 - Architekturkern, Spielsysteme, Inhalte, Savegame-System, UI und Release-Gates.
