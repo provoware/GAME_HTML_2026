@@ -5,7 +5,7 @@
 > Statuswerte: `[ ] offen`, `[-] in Arbeit`, `[x] erledigt`, `[!] blockiert`
 >
 > Fortschritt = erledigte Pflichtaufgaben / alle Pflichtaufgaben × 100  
-> Aktueller Implementierungsfortschritt: **5,4 %**
+> Aktueller Implementierungsfortschritt: **5,7 %**
 
 ---
 
@@ -43,7 +43,7 @@
 - [x] **GAME-0108** initialen Zustand erzeugen.
 - [x] **GAME-0109** Reducer- oder Command-Verarbeitung implementieren.
 - [x] **GAME-0110** selektive State-Subscriptions implementieren.
-- [ ] **GAME-0111** Logging-System mit Leveln implementieren.
+- [x] **GAME-0111** Logging-System mit Leveln implementieren.
 - [ ] **GAME-0112** Diagnosemodus implementieren.
 - [ ] **GAME-0113** Router für Hauptscreens implementieren.
 - [ ] **GAME-0114** Architekturtests gegen verbotene Abhängigkeiten anlegen.
