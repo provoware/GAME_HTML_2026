@@ -5,7 +5,7 @@
 > Statuswerte: `[ ] offen`, `[-] in Arbeit`, `[x] erledigt`, `[!] blockiert`
 >
 > Fortschritt = erledigte Pflichtaufgaben / alle Pflichtaufgaben × 100  
-> Aktueller Implementierungsfortschritt: **2,6 %**
+> Aktueller Implementierungsfortschritt: **2,8 %**
 
 ---
 
@@ -23,7 +23,7 @@
 - [x] **GAME-0010** Vitest konfigurieren.
 - [x] **GAME-0011** Playwright konfigurieren.
 - [x] **GAME-0012** README-Grundstruktur anlegen.
-- [ ] **GAME-0013** CHANGELOG anlegen.
+- [x] **GAME-0013** CHANGELOG anlegen.
 - [ ] **GAME-0014** Lizenzentscheidung dokumentieren.
 - [ ] **GAME-0015** erste Build-, Lint- und Testpipeline erfolgreich ausführen.
 
