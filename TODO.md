@@ -5,7 +5,7 @@
 > Statuswerte: `[ ] offen`, `[-] in Arbeit`, `[x] erledigt`, `[!] blockiert`
 >
 > Fortschritt = erledigte Pflichtaufgaben / alle Pflichtaufgaben × 100  
-> Aktueller Implementierungsfortschritt: **3,7 %**
+> Aktueller Implementierungsfortschritt: **4,3 %**
 
 ---
 
@@ -35,9 +35,9 @@
 
 - [x] **GAME-0101** Ordnerstruktur gemäß `AGENTS.md` anlegen.
 - [x] **GAME-0102** zentralen App-Bootstrap implementieren.
-- [ ] **GAME-0103** Fehlergrenze und globale Fehlerbehandlung implementieren.
-- [ ] **GAME-0104** Konfigurationsmodul implementieren.
-- [ ] **GAME-0105** Event-Bus mit typisierten Ereignissen implementieren.
+- [x] **GAME-0103** Fehlergrenze und globale Fehlerbehandlung implementieren.
+- [x] **GAME-0104** Konfigurationsmodul implementieren.
+- [x] **GAME-0105** Event-Bus mit typisierten Ereignissen implementieren.
 - [ ] **GAME-0106** Action- und Dispatch-System implementieren.
 - [ ] **GAME-0107** zentralen Game-State-Typ definieren.
 - [ ] **GAME-0108** initialen Zustand erzeugen.
