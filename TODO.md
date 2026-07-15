@@ -5,7 +5,7 @@
 > Statuswerte: `[ ] offen`, `[-] in Arbeit`, `[x] erledigt`, `[!] blockiert`
 >
 > Fortschritt = erledigte Pflichtaufgaben / alle Pflichtaufgaben × 100  
-> Aktueller Implementierungsfortschritt: **0,3 %**
+> Aktueller Implementierungsfortschritt: **0,9 %**
 
 ---
 
@@ -14,7 +14,7 @@
 - [x] **GAME-0001** Repository-Inhalt prüfen und Ausgangszustand dokumentieren.
 - [x] **GAME-0002** `AGENTS.md` und `TODO.md` in `main` übernehmen.
 - [x] **GAME-0003** `.gitignore`, `.editorconfig` und `.prettierrc` anlegen.
-- [ ] **GAME-0004** Node-LTS-Version festlegen und dokumentieren.
+- [x] **GAME-0004** Node-LTS-Version festlegen und dokumentieren.
 - [ ] **GAME-0005** `package.json` mit Scripts und Metadaten anlegen.
 - [ ] **GAME-0006** Vite-Projektstruktur erzeugen.
 - [ ] **GAME-0007** TypeScript im Strict-Modus konfigurieren.
