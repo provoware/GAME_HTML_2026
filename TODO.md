@@ -5,7 +5,7 @@
 > Statuswerte: `[ ] offen`, `[-] in Arbeit`, `[x] erledigt`, `[!] blockiert`
 >
 > Fortschritt = erledigte Pflichtaufgaben / alle Pflichtaufgaben × 100  
-> Aktueller Implementierungsfortschritt: **2,4 %**
+> Aktueller Implementierungsfortschritt: **2,6 %**
 
 ---
 
@@ -22,7 +22,7 @@
 - [x] **GAME-0009** Prettier integrieren.
 - [x] **GAME-0010** Vitest konfigurieren.
 - [x] **GAME-0011** Playwright konfigurieren.
-- [ ] **GAME-0012** README-Grundstruktur anlegen.
+- [x] **GAME-0012** README-Grundstruktur anlegen.
 - [ ] **GAME-0013** CHANGELOG anlegen.
 - [ ] **GAME-0014** Lizenzentscheidung dokumentieren.
 - [ ] **GAME-0015** erste Build-, Lint- und Testpipeline erfolgreich ausführen.
