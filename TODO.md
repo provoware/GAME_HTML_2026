@@ -5,7 +5,7 @@
 > Statuswerte: `[ ] offen`, `[-] in Arbeit`, `[x] erledigt`, `[!] blockiert`
 >
 > Fortschritt = erledigte Pflichtaufgaben / alle Pflichtaufgaben × 100  
-> Aktueller Implementierungsfortschritt: **4,6 %**
+> Aktueller Implementierungsfortschritt: **4,7 %**
 
 ---
 
@@ -39,7 +39,7 @@
 - [x] **GAME-0104** Konfigurationsmodul implementieren.
 - [x] **GAME-0105** Event-Bus mit typisierten Ereignissen implementieren.
 - [x] **GAME-0106** Action- und Dispatch-System implementieren.
-- [ ] **GAME-0107** zentralen Game-State-Typ definieren.
+- [x] **GAME-0107** zentralen Game-State-Typ definieren.
 - [ ] **GAME-0108** initialen Zustand erzeugen.
 - [ ] **GAME-0109** Reducer- oder Command-Verarbeitung implementieren.
 - [ ] **GAME-0110** selektive State-Subscriptions implementieren.
