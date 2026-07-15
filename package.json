@@ -29,10 +29,13 @@
   "author": "provoware",
   "license": "UNLICENSED",
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@playwright/test": "latest",
     "eslint": "latest",
+    "globals": "^17.7.0",
     "prettier": "latest",
     "typescript": "latest",
+    "typescript-eslint": "^8.64.0",
     "vite": "latest",
     "vitest": "latest"
   }
