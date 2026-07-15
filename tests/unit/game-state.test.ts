@@ -1,102 +1,59 @@
 import { describe, expect, it } from 'vitest';
 
-import type { GameState } from '../../src/core/state/game-state';
+import { createInitialGameState } from '../../src/core/state/game-state';
 
-describe('GameState', () => {
-  it('beschreibt die zentralen Pflichtbereiche des Spielstands', () => {
-    const state = {
-      schemaVersion: 1,
-      gameVersion: '0.0.0',
-      status: 'setup',
-      mode: 'classic',
-      campaignLengthMonths: 12,
-      calendar: {
-        day: 1,
-        week: 1,
-        month: 1,
-        year: 1986,
-        actionPoints: 3,
-      },
-      profile: {
-        playerName: 'Poppi',
-        nickname: 'P',
-        crewName: 'Kassettencrew',
-        homeDistrict: 'bunkerclub',
-        favoriteSaying: 'Alles rauscht.',
-        fear: 'Stillstand',
-        goal: 'Ehre',
-        importantPerson: 'Etna',
-        shopName: 'Rumpelregal',
-        rivalName: 'Moni',
-        artistName: 'PPPoppi',
-        secretWord: 'amber',
-      },
-      player: {
-        reputation: 10,
-        shadow: 0,
-        morality: 50,
-        influence: 5,
-        creativity: 20,
-        energy: 80,
-        stress: 10,
-        heat: 0,
-        crewLoyalty: 50,
-        resonance: 0,
-        rank: 1,
-        xp: 0,
-      },
-      economy: {
-        cash: 120,
-        savings: 0,
-        debt: 0,
-      },
-      world: {
-        currentDistrictId: 'startbezirk',
-        currentLocationId: 'bunkerclub',
-        unlockedLocationIds: ['bunkerclub'],
-      },
-      missions: {
-        activeMissionIds: [],
-        completedMissionIds: [],
-        failedMissionIds: [],
-      },
-      events: {
-        activeEventIds: [],
-        resolvedEventIds: [],
-      },
-      relationships: [
-        {
-          characterId: 'etna-ruppen',
-          loyalty: 50,
-          trust: 50,
-        },
-      ],
-      achievements: {
-        unlockedIds: [],
-        restrictedByCheats: false,
-      },
-      settings: {
-        theme: 'retro-amber',
-        reducedMotion: false,
-        audioEnabled: true,
-      },
-      rng: {
-        seed: 'GAME2026',
-        worldStream: 'world',
-        eventStream: 'event',
-        uiStream: 'ui',
-      },
-      history: [
-        {
-          turn: 0,
-          message: 'Spiel vorbereitet.',
-          createdAt: '1986-01-01T00:00:00.000Z',
-        },
-      ],
-    } satisfies GameState;
+describe('createInitialGameState', () => {
+  it('erzeugt die zentralen Pflichtbereiche des Spielstands', () => {
+    const state = createInitialGameState();
 
     expect(state.schemaVersion).toBe(1);
+    expect(state.gameVersion).toBe('0.0.0');
+    expect(state.status).toBe('setup');
+    expect(state.mode).toBe('classic');
+    expect(state.campaignLengthMonths).toBe(12);
+    expect(state.calendar).toEqual({
+      day: 1,
+      week: 1,
+      month: 1,
+      year: 1986,
+      actionPoints: 3,
+    });
     expect(state.profile.secretWord).toBe('amber');
-    expect(state.rng.seed).toBe('GAME2026');
+    expect(state.player.rank).toBe(1);
+    expect(state.economy.cash).toBe(120);
+    expect(state.world.unlockedLocationIds).toEqual(['bunkerclub']);
+    expect(state.missions.activeMissionIds).toEqual([]);
+    expect(state.events.activeEventIds).toEqual([]);
+    expect(state.relationships).toEqual([
+      {
+        characterId: 'etna-ruppen',
+        loyalty: 50,
+        trust: 50,
+      },
+    ]);
+    expect(state.achievements.restrictedByCheats).toBe(false);
+    expect(state.settings.theme).toBe('retro-amber');
+    expect(state.rng).toEqual({
+      seed: 'GAME2026',
+      worldStream: 'GAME2026:world',
+      eventStream: 'GAME2026:event',
+      uiStream: 'GAME2026:ui',
+    });
+    expect(state.history).toEqual([
+      {
+        turn: 0,
+        message: 'Spiel vorbereitet.',
+        createdAt: '1986-01-01T00:00:00.000Z',
+      },
+    ]);
+  });
+
+  it('teilt keine Array-Referenzen zwischen neuen Spielständen', () => {
+    const firstState = createInitialGameState();
+    const secondState = createInitialGameState();
+
+    expect(firstState.world.unlockedLocationIds).not.toBe(secondState.world.unlockedLocationIds);
+    expect(firstState.relationships).not.toBe(secondState.relationships);
+    expect(firstState.history).not.toBe(secondState.history);
   });
 });
