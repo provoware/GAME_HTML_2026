@@ -3,6 +3,7 @@ import type { EventBus } from '../core/events/event-bus';
 import { createAppEventBus } from '../core/events/event-bus';
 import type { AppEventMap } from '../core/events/event-bus';
 import { installErrorBoundary } from './error-boundary';
+import { resolveAppScreen } from './router';
 
 export type BootstrapOptions = {
   readonly document: Document;
@@ -38,13 +39,18 @@ function createStartScreen(document: Document, diagnosticsEnabled: boolean): HTM
   main.id = 'main-content';
   main.tabIndex = -1;
 
+  const screen = resolveAppScreen();
+
   const title = document.createElement('h1');
   title.textContent = appConfig.appName;
+
+  const screenTitle = document.createElement('p');
+  screenTitle.textContent = screen.title;
 
   const status = document.createElement('p');
   status.textContent = `Version ${appConfig.version} · ${appConfig.environment}`;
 
-  main.append(title, status);
+  main.append(title, screenTitle, status);
 
   if (diagnosticsEnabled) {
     main.append(createDiagnosticsPanel(document));
