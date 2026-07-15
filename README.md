@@ -20,4 +20,3 @@ festgelegt, damit lokale Entwicklung und spätere CI-Läufe dieselbe Node-Hauptv
 
 Der aktuelle Container kann davon abweichen; vor npm-, Vite- oder Testarbeiten ist deshalb die
 aktive Node-Version gegen `.nvmrc` zu prüfen.
-

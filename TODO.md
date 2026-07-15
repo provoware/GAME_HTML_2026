@@ -5,7 +5,7 @@
 > Statuswerte: `[ ] offen`, `[-] in Arbeit`, `[x] erledigt`, `[!] blockiert`
 >
 > Fortschritt = erledigte Pflichtaufgaben / alle Pflichtaufgaben × 100  
-> Aktueller Implementierungsfortschritt: **1,7 %**
+> Aktueller Implementierungsfortschritt: **2,4 %**
 
 ---
 
@@ -19,9 +19,9 @@
 - [x] **GAME-0006** Vite-Projektstruktur erzeugen.
 - [x] **GAME-0007** TypeScript im Strict-Modus konfigurieren.
 - [x] **GAME-0008** ESLint konfigurieren.
-- [ ] **GAME-0009** Prettier integrieren.
-- [ ] **GAME-0010** Vitest konfigurieren.
-- [ ] **GAME-0011** Playwright konfigurieren.
+- [x] **GAME-0009** Prettier integrieren.
+- [x] **GAME-0010** Vitest konfigurieren.
+- [x] **GAME-0011** Playwright konfigurieren.
 - [ ] **GAME-0012** README-Grundstruktur anlegen.
 - [ ] **GAME-0013** CHANGELOG anlegen.
 - [ ] **GAME-0014** Lizenzentscheidung dokumentieren.
