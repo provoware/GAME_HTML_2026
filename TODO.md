@@ -5,13 +5,13 @@
 > Statuswerte: `[ ] offen`, `[-] in Arbeit`, `[x] erledigt`, `[!] blockiert`
 >
 > Fortschritt = erledigte Pflichtaufgaben / alle Pflichtaufgaben × 100  
-> Aktueller Implementierungsfortschritt: **0 %**
+> Aktueller Implementierungsfortschritt: **0,2 %**
 
 ---
 
 # PHASE 00 — REPOSITORY UND GRUNDLAGE
 
-- [ ] **GAME-0001** Repository-Inhalt prüfen und Ausgangszustand dokumentieren.
+- [x] **GAME-0001** Repository-Inhalt prüfen und Ausgangszustand dokumentieren.
 - [ ] **GAME-0002** `AGENTS.md` und `TODO.md` in `main` übernehmen.
 - [ ] **GAME-0003** `.gitignore`, `.editorconfig` und `.prettierrc` anlegen.
 - [ ] **GAME-0004** Node-LTS-Version festlegen und dokumentieren.
