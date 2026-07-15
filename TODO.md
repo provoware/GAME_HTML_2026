@@ -12,7 +12,7 @@
 # PHASE 00 — REPOSITORY UND GRUNDLAGE
 
 - [x] **GAME-0001** Repository-Inhalt prüfen und Ausgangszustand dokumentieren.
-- [ ] **GAME-0002** `AGENTS.md` und `TODO.md` in `main` übernehmen.
+- [x] **GAME-0002** `AGENTS.md` und `TODO.md` in `main` übernehmen.
 - [ ] **GAME-0003** `.gitignore`, `.editorconfig` und `.prettierrc` anlegen.
 - [ ] **GAME-0004** Node-LTS-Version festlegen und dokumentieren.
 - [ ] **GAME-0005** `package.json` mit Scripts und Metadaten anlegen.
