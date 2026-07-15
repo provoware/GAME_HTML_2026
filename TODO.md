@@ -5,7 +5,7 @@
 > Statuswerte: `[ ] offen`, `[-] in Arbeit`, `[x] erledigt`, `[!] blockiert`
 >
 > Fortschritt = erledigte Pflichtaufgaben / alle Pflichtaufgaben × 100  
-> Aktueller Implementierungsfortschritt: **6,3 %**
+> Aktueller Implementierungsfortschritt: **6,5 %**
 
 ---
 
@@ -47,7 +47,7 @@
 - [x] **GAME-0112** Diagnosemodus implementieren.
 - [x] **GAME-0113** Router für Hauptscreens implementieren.
 - [x] **GAME-0114** Architekturtests gegen verbotene Abhängigkeiten anlegen.
-- [ ] **GAME-0115** zyklische Imports automatisch prüfen.
+- [x] **GAME-0115** zyklische Imports automatisch prüfen.
 
 **Abnahme Phase 01:** UI kann Zustand lesen, Actions auslösen und Fehler sauber anzeigen.
 
