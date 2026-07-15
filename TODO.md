@@ -5,7 +5,7 @@
 > Statuswerte: `[ ] offen`, `[-] in Arbeit`, `[x] erledigt`, `[!] blockiert`
 >
 > Fortschritt = erledigte Pflichtaufgaben / alle Pflichtaufgaben × 100  
-> Aktueller Implementierungsfortschritt: **3,2 %**
+> Aktueller Implementierungsfortschritt: **3,4 %**
 
 ---
 
@@ -33,7 +33,7 @@
 
 # PHASE 01 — ARCHITEKTURKERN
 
-- [ ] **GAME-0101** Ordnerstruktur gemäß `AGENTS.md` anlegen.
+- [x] **GAME-0101** Ordnerstruktur gemäß `AGENTS.md` anlegen.
 - [ ] **GAME-0102** zentralen App-Bootstrap implementieren.
 - [ ] **GAME-0103** Fehlergrenze und globale Fehlerbehandlung implementieren.
 - [ ] **GAME-0104** Konfigurationsmodul implementieren.
