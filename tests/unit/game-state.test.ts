@@ -20,7 +20,21 @@ describe('createInitialGameState', () => {
     });
     expect(state.profile.secretWord).toBe('amber');
     expect(state.player.rank).toBe(1);
-    expect(state.economy.cash).toBe(120);
+    expect(state.economy).toEqual({
+      schemaVersion: 1,
+      cash: 120,
+      savings: 0,
+      debt: 0,
+      fixedCosts: 35,
+      upkeep: 20,
+      monthlyWage: 90,
+      savingsInterestRateBasisPoints: 25,
+      debtInterestRateBasisPoints: 300,
+      ledger: {
+        earned: 0,
+        spent: 0,
+      },
+    });
     expect(state.world).toEqual({
       schemaVersion: 1,
       currentDistrictId: 'startbezirk',
@@ -62,6 +76,8 @@ describe('createInitialGameState', () => {
     const firstState = createInitialGameState();
     const secondState = createInitialGameState();
 
+    expect(firstState.economy).not.toBe(secondState.economy);
+    expect(firstState.economy.ledger).not.toBe(secondState.economy.ledger);
     expect(firstState.world).not.toBe(secondState.world);
     expect(firstState.world.unlockedLocationIds).not.toBe(secondState.world.unlockedLocationIds);
     expect(firstState.relationships).not.toBe(secondState.relationships);
