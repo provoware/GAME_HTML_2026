@@ -1,4 +1,5 @@
 import { createDefaultWorldState, type WorldState } from '../../game/districts/world-state';
+import { createDefaultEconomyState, type EconomyState } from '../../game/economy/economy-state';
 import { createDefaultPlayerProfile, type PlayerProfile } from '../../game/profile/player-profile';
 
 export type CampaignMode = 'classic' | 'tycoon' | 'clean-legend' | 'chaos';
@@ -30,12 +31,6 @@ export type PlayerStatsState = {
   readonly resonance: number;
   readonly rank: number;
   readonly xp: number;
-};
-
-export type EconomyState = {
-  readonly cash: number;
-  readonly savings: number;
-  readonly debt: number;
 };
 
 export type MissionState = {
@@ -137,11 +132,7 @@ export function createInitialGameState(): GameState {
       rank: 1,
       xp: 0,
     },
-    economy: {
-      cash: 120,
-      savings: 0,
-      debt: 0,
-    },
+    economy: createDefaultEconomyState(),
     world: createDefaultWorldState(),
     missions: {
       activeMissionIds: [],
