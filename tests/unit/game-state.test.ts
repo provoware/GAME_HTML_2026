@@ -21,7 +21,17 @@ describe('createInitialGameState', () => {
     expect(state.profile.secretWord).toBe('amber');
     expect(state.player.rank).toBe(1);
     expect(state.economy.cash).toBe(120);
-    expect(state.world.unlockedLocationIds).toEqual(['bunkerclub']);
+    expect(state.world).toEqual({
+      schemaVersion: 1,
+      currentDistrictId: 'startbezirk',
+      knownDistrictIds: ['startbezirk'],
+      currentLocationId: 'bunkerclub',
+      unlockedLocationIds: ['bunkerclub'],
+      lockedLocationIds: [],
+      visitedLocationIds: ['bunkerclub'],
+      flags: [],
+      rumors: [],
+    });
     expect(state.missions.activeMissionIds).toEqual([]);
     expect(state.events.activeEventIds).toEqual([]);
     expect(state.relationships).toEqual([
@@ -52,6 +62,7 @@ describe('createInitialGameState', () => {
     const firstState = createInitialGameState();
     const secondState = createInitialGameState();
 
+    expect(firstState.world).not.toBe(secondState.world);
     expect(firstState.world.unlockedLocationIds).not.toBe(secondState.world.unlockedLocationIds);
     expect(firstState.relationships).not.toBe(secondState.relationships);
     expect(firstState.history).not.toBe(secondState.history);

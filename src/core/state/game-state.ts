@@ -1,3 +1,4 @@
+import { createDefaultWorldState, type WorldState } from '../../game/districts/world-state';
 import { createDefaultPlayerProfile, type PlayerProfile } from '../../game/profile/player-profile';
 
 export type CampaignMode = 'classic' | 'tycoon' | 'clean-legend' | 'chaos';
@@ -35,12 +36,6 @@ export type EconomyState = {
   readonly cash: number;
   readonly savings: number;
   readonly debt: number;
-};
-
-export type WorldState = {
-  readonly currentDistrictId: string;
-  readonly currentLocationId: string;
-  readonly unlockedLocationIds: readonly string[];
 };
 
 export type MissionState = {
@@ -147,11 +142,7 @@ export function createInitialGameState(): GameState {
       savings: 0,
       debt: 0,
     },
-    world: {
-      currentDistrictId: 'startbezirk',
-      currentLocationId: 'bunkerclub',
-      unlockedLocationIds: ['bunkerclub'],
-    },
+    world: createDefaultWorldState(),
     missions: {
       activeMissionIds: [],
       completedMissionIds: [],
