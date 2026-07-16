@@ -1,3 +1,5 @@
+import { createDefaultPlayerProfile, type PlayerProfile } from '../../game/profile/player-profile';
+
 export type CampaignMode = 'classic' | 'tycoon' | 'clean-legend' | 'chaos';
 
 export type CampaignLengthMonths = 12 | 24 | 36 | 'endless';
@@ -12,20 +14,7 @@ export type GameCalendarState = {
   readonly actionPoints: number;
 };
 
-export type PlayerProfileState = {
-  readonly playerName: string;
-  readonly nickname: string;
-  readonly crewName: string;
-  readonly homeDistrict: string;
-  readonly favoriteSaying: string;
-  readonly fear: string;
-  readonly goal: string;
-  readonly importantPerson: string;
-  readonly shopName: string;
-  readonly rivalName: string;
-  readonly artistName: string;
-  readonly secretWord: string;
-};
+export type PlayerProfileState = PlayerProfile;
 
 export type PlayerStatsState = {
   readonly reputation: number;
@@ -138,20 +127,7 @@ export function createInitialGameState(): GameState {
       year: 1986,
       actionPoints: INITIAL_ACTION_POINTS,
     },
-    profile: {
-      playerName: 'PPPoppi Poppsen',
-      nickname: 'Poppi',
-      crewName: 'Kassettencrew',
-      homeDistrict: 'startbezirk',
-      favoriteSaying: 'Alles rauscht, aber wir bleiben wach.',
-      fear: 'Stillstand',
-      goal: 'Euronen, Ehre und ein sauberer Abgang',
-      importantPerson: 'Etna Ruppen',
-      shopName: 'Rumpelregal 86',
-      rivalName: 'Moni Monopol',
-      artistName: 'PPPoppi',
-      secretWord: 'amber',
-    },
+    profile: createDefaultPlayerProfile(),
     player: {
       reputation: 10,
       shadow: 0,

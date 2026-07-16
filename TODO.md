@@ -5,7 +5,7 @@
 > Statuswerte: `[ ] offen`, `[-] in Arbeit`, `[x] erledigt`, `[!] blockiert`
 >
 > Fortschritt = erledigte Pflichtaufgaben / alle Pflichtaufgaben × 100  
-> Aktueller Implementierungsfortschritt: **6,7 %**
+> Aktueller Implementierungsfortschritt: **7,0 %**
 
 ---
 
@@ -56,7 +56,7 @@
 # PHASE 02 — DATENMODELLE UND SCHEMATA
 
 - [x] **GAME-0201** IDs und Namenskonventionen definieren.
-- [ ] **GAME-0202** Spielerprofil-Schema definieren.
+- [x] **GAME-0202** Spielerprofil-Schema definieren.
 - [ ] **GAME-0203** Weltzustand-Schema definieren.
 - [ ] **GAME-0204** Wirtschafts-Schema definieren.
 - [ ] **GAME-0205** Figuren-Schema definieren.
