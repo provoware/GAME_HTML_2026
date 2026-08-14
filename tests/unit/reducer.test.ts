@@ -52,4 +52,53 @@ describe('processGameAction', () => {
       state,
     );
   });
+
+  it('weist typfalsche und unbekannte Profilfelder vollständig zurück', () => {
+    const state = createInitialGameState();
+
+    expect(
+      processGameAction(state, {
+        type: 'profile:update',
+        payload: { playerName: 86 },
+      }),
+    ).toBe(state);
+    expect(
+      processGameAction(state, {
+        type: 'profile:update',
+        payload: { playerName: 'Etna', admin: true },
+      }),
+    ).toBe(state);
+    expect(
+      processGameAction(state, {
+        type: 'profile:update',
+        payload: { schemaVersion: 999 },
+      }),
+    ).toBe(state);
+    expect(
+      processGameAction(state, {
+        type: 'profile:update',
+        payload: { nickname: 'x'.repeat(25) },
+      }),
+    ).toBe(state);
+    expect(
+      processGameAction(state, {
+        type: 'profile:update',
+        payload: { nickname: '   ' },
+      }),
+    ).toBe(state);
+  });
+
+  it('weist ungültige History-Werte vollständig zurück', () => {
+    const state = createInitialGameState();
+
+    for (const payload of [
+      { turn: -1, message: 'Kaputt', createdAt: '1986-01-01T08:00:00.000Z' },
+      { turn: Number.NaN, message: 'Kaputt', createdAt: '1986-01-01T08:00:00.000Z' },
+      { turn: 1, message: '', createdAt: '1986-01-01T08:00:00.000Z' },
+      { turn: 1, message: 'x'.repeat(501), createdAt: '1986-01-01T08:00:00.000Z' },
+      { turn: 1, message: 'Kaputt', createdAt: 'kein Datum' },
+    ]) {
+      expect(processGameAction(state, { type: 'history:add', payload })).toBe(state);
+    }
+  });
 });

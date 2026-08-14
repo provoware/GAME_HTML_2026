@@ -1,5 +1,14 @@
 import type { GameAction } from './actions';
 import type { GameState, HistoryEntry, PlayerProfileState } from './game-state';
+import {
+  isBoundedString,
+  isIntegerInRange,
+  isIsoTimestamp,
+  isRecord,
+} from '../validation/runtime-validation';
+import { PLAYER_PROFILE_FIELD_LIMITS } from '../../game/profile/player-profile';
+
+const PROFILE_FIELD_LIMITS: Readonly<Record<string, number>> = PLAYER_PROFILE_FIELD_LIMITS;
 
 export type GameStateAction =
   | {
@@ -64,7 +73,20 @@ function isGameStateAction(action: GameAction): action is GameStateAction {
 function isProfileUpdateAction(
   action: GameAction,
 ): action is Extract<GameStateAction, { readonly type: 'profile:update' }> {
-  return isRecord(action.payload);
+  if (!isRecord(action.payload)) {
+    return false;
+  }
+
+  const entries = Object.entries(action.payload);
+
+  return (
+    entries.length > 0 &&
+    entries.every(([field, value]) => {
+      const maxLength = PROFILE_FIELD_LIMITS[field];
+
+      return maxLength !== undefined && isBoundedString(value, { maxLength });
+    })
+  );
 }
 
 function isHistoryAddAction(
@@ -74,12 +96,8 @@ function isHistoryAddAction(
 
   return (
     isRecord(payload) &&
-    typeof payload.turn === 'number' &&
-    typeof payload.message === 'string' &&
-    typeof payload.createdAt === 'string'
+    isIntegerInRange(payload.turn, 0, Number.MAX_SAFE_INTEGER) &&
+    isBoundedString(payload.message, { maxLength: 500 }) &&
+    isIsoTimestamp(payload.createdAt)
   );
-}
-
-function isRecord(value: unknown): value is Readonly<Record<string, unknown>> {
-  return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
