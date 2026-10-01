@@ -43,24 +43,64 @@ Produktionsbuilds dürfen keine externen CDN-Aufrufe benötigen.
 
 ## Lokale Entwicklung
 
-Voraussetzung ist eine Node- und npm-Version, die zu `package.json` und `.nvmrc` passt.
+### Erster Start – Schritt für Schritt
 
-```bash
-npm ci
-npm run dev
-```
+1. Öffne ein Terminal und wechsle in den Projektordner:
 
-Wichtige Prüfungen:
+   ```bash
+   cd /workspace/GAME_HTML_2026
+   ```
+
+2. Aktiviere die vorgesehene Node-Version. Falls `nvm` noch nicht installiert ist,
+   installiere zuerst [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) und öffne
+   danach ein neues Terminal.
+
+   ```bash
+   nvm install
+   nvm use
+   node --version
+   npm --version
+   ```
+
+   `node --version` muss mindestens `v24.0.0` und `npm --version` mindestens `11.0.0`
+   ausgeben.
+
+3. Installiere exakt die im Projekt festgeschriebenen Pakete:
+
+   ```bash
+   npm ci
+   ```
+
+4. Starte die Entwicklungsansicht:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Öffne die im Terminal angezeigte Adresse im Browser, normalerweise
+   `http://localhost:5173`. Beende den Server später mit `Strg+C`.
+
+### Änderungen prüfen
+
+Führe nach einer Änderung diese Befehle einzeln in derselben Reihenfolge aus. Bricht ein
+Befehl ab, lies zuerst dessen letzte Fehlermeldung; der nächste Befehl behebt den Fehler nicht.
 
 ```bash
 npm run lint
 npm run typecheck
 npm test
 npm run build
+```
+
+Der Browser-Test benötigt einmalig einen eigenen Testbrowser:
+
+```bash
+npx playwright install chromium
 npm run test:e2e
 ```
 
-Die vollständige Pipeline gilt erst als bestanden, wenn alle genannten Befehle ohne Fehler laufen.
+Jeder Befehl muss mit Exit-Code `0` enden (das bedeutet: erfolgreich). Der fertige statische
+Build liegt danach in `dist/` und kann mit `npm run preview` lokal geprüft werden.
 
 ## Projektsteuerung
 

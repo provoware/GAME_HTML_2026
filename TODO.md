@@ -59,8 +59,8 @@
 - [x] **GAME-0202** Spielerprofil-Schema definieren.
 - [x] **GAME-0203** Weltzustand-Schema definieren.
 - [x] **GAME-0204** Wirtschafts-Schema definieren.
-- [ ] **GAME-0205** Figuren-Schema definieren.
-- [ ] **GAME-0206** Orts-Schema definieren.
+- [x] **GAME-0205** Figuren-Schema definieren.
+- [x] **GAME-0206** Orts-Schema definieren.
 - [ ] **GAME-0207** Missions-Schema definieren.
 - [ ] **GAME-0208** Ereignis-Schema definieren.
 - [ ] **GAME-0209** Dialog-Schema definieren.
@@ -68,7 +68,7 @@
 - [ ] **GAME-0211** Enden-Schema definieren.
 - [ ] **GAME-0212** Cheat-Schema definieren.
 - [ ] **GAME-0213** Savegame-Schema definieren.
-- [ ] **GAME-0214** Laufzeitvalidierung implementieren.
+- [x] **GAME-0214** Laufzeitvalidierung implementieren.
 - [ ] **GAME-0215** Inhaltsvalidierungsskript implementieren.
 - [ ] **GAME-0216** eindeutige ID-Prüfung implementieren.
 - [ ] **GAME-0217** Referenzintegritätsprüfung implementieren.
