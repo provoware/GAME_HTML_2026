@@ -2,6 +2,7 @@ name: Quellcode und Spieltests
 
 on:
   push:
+    branches: [main]
   pull_request:
 
 permissions:
