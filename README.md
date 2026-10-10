@@ -103,6 +103,19 @@ npm run test:e2e
 Jeder Befehl muss mit Exit-Code `0` enden (das bedeutet: erfolgreich). Der fertige statische
 Build liegt danach in `dist/` und kann mit `npm run preview` lokal geprüft werden.
 
+## Savegame-Schema (GAME-0213 — in Prüfung)
+
+Der Entwicklungsbranch `feat/game-0213-savegame-schema` enthält den Datenvertrag
+`src/game/state/savegame-schema.ts`. `validateSavegame()` prüft die äußere
+Save-Version, UTC-Zeitstempel, die bekannte Spielzustandsstruktur, Wertebereiche
+und mehrere Referenzregeln. Ungültige Eingaben werden als Fehlerliste zurückgegeben;
+es wird weder gespeichert noch ein Spielzustand verändert.
+
+**Wichtig:** Der Stand ist noch nicht durch Pull-Request-CI bestätigt und nicht
+in `main` integriert. Es existiert noch keine produktive Speicherfunktion,
+keine Migration und keine Prüfsummenprüfung. Für spätere Formatänderungen ist
+ein eigener Versionsvertrag erforderlich.
+
 ## Missions-Schema (GAME-0207)
 
 Die Datei `src/game/missions/mission-schema.ts` definiert einen versionierten Inhaltsvertrag für zehn Missionsarten. `validateMission()` prüft Pflichtfelder, ID-Format und Eindeutigkeit, Zeichengrenzen, Zielmengen, Schrittreferenzen, Profilfelder und Fristen. Ungültige Missionen liefern eine Fehlerliste; der Validator verändert keine Spielstände. `null` bedeutet bei `timeLimitDays`, dass die Mission keine Frist besitzt. Die spätere Missions-Engine sowie die projektweite Auflösung von IDs bleiben eigene Aufgaben (ab GAME-0217 und GAME-1201).

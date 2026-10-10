@@ -67,7 +67,7 @@
 - [x] **GAME-0210** Achievement-Schema definieren.
 - [x] **GAME-0211** Enden-Schema definieren.
 - [x] **GAME-0212** Cheat-Schema definieren.
-- [ ] **GAME-0213** Savegame-Schema definieren.
+- [-] **GAME-0213** Savegame-Schema definieren (Code und Negativtests auf Entwicklungsbranch; PR und CI noch ausstehend).
 - [x] **GAME-0214** Laufzeitvalidierung implementieren.
 - [ ] **GAME-0215** Inhaltsvalidierungsskript implementieren.
 - [ ] **GAME-0216** eindeutige ID-Prüfung implementieren.

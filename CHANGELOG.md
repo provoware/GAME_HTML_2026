@@ -8,6 +8,8 @@ Das Format orientiert sich an Keep a Changelog. Die Versionsführung folgt SemVe
 
 ### Angelegt
 
+- GAME-0213 (Entwicklungsbranch, CI ausstehend): versionierter Savegame-v1-Vertrag mit Struktur-, Werte-, Zeitstempel- und Referenzprüfung sowie Positiv- und Negativtests. Keine Speicherfunktion oder Migration.
+
 - GAME-0212: deklaratives, versioniertes Cheat-Schema für zehn Cheat-Arten, vier sichere Auslöser, streng erlaubte Wirkungen, Werteobergrenzen, Spielstand-Markierung und optionale Achievement-Sperre mit positiven und negativen Sicherheitstests.
 
 - GAME-0211: versionierter Enden-Vertrag für zwölf Endarten, Sieg/Niederlage, priorisierte Endbedingungen, Kampagnenmodi, Missions-/Erfolgs-/Ereignisreferenzen, Cheat-Regeln und personalisierten Abspann samt Negativtests.
