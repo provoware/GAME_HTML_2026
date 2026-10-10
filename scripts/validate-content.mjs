@@ -20,7 +20,8 @@ if (args.length !== 0 && (args.length !== 2 || args[0] !== '--root' || !args[1])
     try {
       const { CONTENT_CATEGORIES, validateContent } =
         await server.ssrLoadModule('/src/game/validation/content-validation.ts');
-      const result = await scanContent(root, CONTENT_CATEGORIES, validateContent);
+      const { findDuplicateContentIds } = await server.ssrLoadModule('/src/game/validation/unique-content-ids.ts');
+      const result = await scanContent(root, CONTENT_CATEGORIES, validateContent, findDuplicateContentIds);
       for (const issue of result.issues) console.error('FEHLER: ' + issue);
       if (result.files === 0) console.warn('Hinweis: 0 Inhaltsdateien vorhanden; kein produktiver Inhalt geprüft.');
       console.log('Inhaltsprüfung: ' + result.files + ' Datei(en), ' + result.issues.length + ' Fehler.');
@@ -34,7 +35,8 @@ if (args.length !== 0 && (args.length !== 2 || args[0] !== '--root' || !args[1])
   }
 }
 
-async function scanContent(root, categories, validateContent) {
+async function scanContent(root, categories, validateContent, findDuplicateContentIds) {
+  const validIds = [];
   const issues = [];
   let files = 0;
   let rootEntries;
@@ -81,10 +83,14 @@ async function scanContent(root, categories, validateContent) {
       const result = validateContent(category, content);
       if (!result.valid) {
         for (const problem of result.issues) issues.push(display + ': ' + problem);
-      } else if (basename(file.name, '.json') !== result.id) {
+      } else {
+        validIds.push({ id: result.id, file: display });
+      }
+      if (result.valid && basename(file.name, '.json') !== result.id) {
         issues.push(display + ': Dateiname muss mit der Inhalts-ID ' + result.id + ' übereinstimmen.');
       }
     }
   }
+  issues.push(...findDuplicateContentIds(validIds));
   return { files, issues };
 }
