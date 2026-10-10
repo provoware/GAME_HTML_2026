@@ -5,6 +5,11 @@ export type ContentReferenceEntry = {
   readonly file: string;
   readonly value: unknown;
 };
+const REFERENCE_FIELDS = {
+  characters: ['dialogueIds', 'missionIds', 'eventIds'],
+  locations: ['characterIds', 'eventIds'],
+} as const;
+
 export function findMissingContentReferences(entries: readonly ContentReferenceEntry[]): readonly string[] {
   const available = new Map<ContentCategory, Set<string>>();
   for (const entry of entries) {
