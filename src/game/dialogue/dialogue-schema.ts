@@ -270,7 +270,7 @@ function checkGraph(dialogue: DialogueDefinition, issues: string[]): void {
   const queue = [dialogue.startNodeId];
   for (let i = 0; i < queue.length; i++) {
     const id = queue[i];
-    if (reachable.has(id)) continue;
+    if (id === undefined || reachable.has(id)) continue;
     reachable.add(id);
     for (const choice of byId.get(id)?.choices ?? []) {
       if (choice.nextNodeId !== null) queue.push(choice.nextNodeId);
