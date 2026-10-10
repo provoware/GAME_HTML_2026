@@ -122,3 +122,34 @@ describe('GAME-0215 – Zuordnung zu vorhandenen Inhaltsprüfungen', () => {
     rejects('cheats', { ...cheat, effect: { kind: 'add-cash', amount: 1, command: 'eval' } }, 'unbekanntes Feld');
   });
 });
+
+
+describe('GAME-0218 – vollständige Schema-Vertragsmatrix', () => {
+  it.each(CONTENT_CATEGORIES)('%s: fehlende Pflicht-ID wird abgelehnt', (category) => {
+    const value: Record<string, unknown> = { ...samples[category] };
+    delete value.id;
+    rejects(category, value, 'id');
+  });
+
+  it.each(CONTENT_CATEGORIES)('%s: unerwartetes Hauptfeld wird abgelehnt', (category) => {
+    rejects(category, { ...samples[category], unexpectedPayload: 'ignored?' }, 'unexpectedPayload');
+  });
+
+  it.each(CONTENT_CATEGORIES)('%s: falscher Datentyp bei ID wird abgelehnt', (category) => {
+    rejects(category, { ...samples[category], id: 1234 }, 'id');
+  });
+
+  it.each(CONTENT_CATEGORIES)('%s: Daten werden nicht verändert', (category) => {
+    const original = structuredClone(samples[category]);
+    const before = JSON.stringify(original);
+    const result = validateContent(category, original);
+    expect(result.valid).toBe(true);
+    expect(JSON.stringify(original)).toBe(before);
+  });
+
+  it('unbekannte Schemaversionen werden für alle acht Arten abgewiesen', () => {
+    for (const category of CONTENT_CATEGORIES) {
+      rejects(category, { ...samples[category], schemaVersion: 999 }, 'schemaVersion');
+    }
+  });
+});
