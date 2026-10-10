@@ -8,6 +8,9 @@ Das Format orientiert sich an Keep a Changelog. Die Versionsführung folgt SemVe
 
 ### Angelegt
 
+- GAME-0217 (zur Prüfung): dateiübergreifende Prüfung existierender Figuren-, Orts-, Missions-, Dialog-, Ereignis-, Erfolgs- und Endenreferenzen; vorhandene Modul-Regressionstests und Einbindung in die Inhaltsvalidierung.
+
+
 - GAME-0216 (in Prüfung): globaler Inhalts-ID-Abgleich für valide JSON-Inhalte unterschiedlicher Kategorien; deterministische Diagnosen und vier Regressionstests. Noch nicht freigegeben.
 
 - GAME-0215: automatisches Inhaltsvalidierungsskript für alle acht bestehenden Inhaltsmodelle mit strengem JSON-/Dateisicherheitscheck, unbekannten Feldern, lokalen Verweisen, verständlichen Fehlern, Kommandozeilentests und CI-Gate.

@@ -21,7 +21,8 @@ if (args.length !== 0 && (args.length !== 2 || args[0] !== '--root' || !args[1])
       const { CONTENT_CATEGORIES, validateContent } =
         await server.ssrLoadModule('/src/game/validation/content-validation.ts');
       const { findDuplicateContentIds } = await server.ssrLoadModule('/src/game/validation/unique-content-ids.ts');
-      const result = await scanContent(root, CONTENT_CATEGORIES, validateContent, findDuplicateContentIds);
+      const { findMissingContentReferences } = await server.ssrLoadModule('/src/game/validation/content-references.ts');
+      const result = await scanContent(root, CONTENT_CATEGORIES, validateContent, findDuplicateContentIds, findMissingContentReferences);
       for (const issue of result.issues) console.error('FEHLER: ' + issue);
       if (result.files === 0) console.warn('Hinweis: 0 Inhaltsdateien vorhanden; kein produktiver Inhalt geprüft.');
       console.log('Inhaltsprüfung: ' + result.files + ' Datei(en), ' + result.issues.length + ' Fehler.');
@@ -35,7 +36,8 @@ if (args.length !== 0 && (args.length !== 2 || args[0] !== '--root' || !args[1])
   }
 }
 
-async function scanContent(root, categories, validateContent, findDuplicateContentIds) {
+async function scanContent(root, categories, validateContent, findDuplicateContentIds, findMissingContentReferences) {
+  const validEntries = [];
   const validIds = [];
   const issues = [];
   let files = 0;
@@ -85,6 +87,7 @@ async function scanContent(root, categories, validateContent, findDuplicateConte
         for (const problem of result.issues) issues.push(display + ': ' + problem);
       } else {
         validIds.push({ id: result.id, file: display });
+        validEntries.push({ category, id: result.id, file: display, value: content });
       }
       if (result.valid && basename(file.name, '.json') !== result.id) {
         issues.push(display + ': Dateiname muss mit der Inhalts-ID ' + result.id + ' übereinstimmen.');
@@ -92,5 +95,6 @@ async function scanContent(root, categories, validateContent, findDuplicateConte
     }
   }
   issues.push(...findDuplicateContentIds(validIds));
+  issues.push(...findMissingContentReferences(validEntries));
   return { files, issues };
 }

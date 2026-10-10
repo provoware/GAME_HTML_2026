@@ -28,10 +28,10 @@ afterEach(() => {
 });
 
 describe('GAME-0215 – echtes Kommandozeilen-Skript', () => {
-  it('nimmt zwei unveränderte, gültige JSON-Testdateien an', () => {
+  it('nimmt drei gültige, vollständig referenzierte JSON-Testdateien an', () => {
     const result = run(VALID_FIXTURES);
     expect(result.status, result.stderr).toBe(0);
-    expect(result.stdout).toContain('2 Datei(en), 0 Fehler');
+    expect(result.stdout).toContain('3 Datei(en), 0 Fehler');
   });
 
   it('erfasst verschiedene Fehler samt Datei und beendet sich mit Fehlerstatus', () => {
