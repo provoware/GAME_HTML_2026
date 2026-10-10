@@ -8,6 +8,9 @@ Das Format orientiert sich an Keep a Changelog. Die Versionsführung folgt SemVe
 
 ### Angelegt
 
+- GAME-0302 (in Prüfung): getrennte deterministische Zufallsströme für Welt, Ereignisse und Oberfläche mit festen Domänenmasken, isoliertem Zustand sowie positiven und negativen Unabhängigkeitstests. Noch keine Änderung des Savegame-Vertrags oder der Spiel-Engine.
+
+
 - GAME-0301 (in Prüfung): gekapselter deterministischer Mulberry32-Zufallsgenerator mit strengem 32-Bit-Seed, unabhängigem Zustand, reproduzierbaren Testvektoren und Grenztests. Nicht kryptografisch; getrennte Streams, Seed-Erzeugung, Spielzustandsintegration folgen in eigenständigen Aufgaben.
 
 
