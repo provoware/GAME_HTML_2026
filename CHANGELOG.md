@@ -8,6 +8,8 @@ Das Format orientiert sich an Keep a Changelog. Die Versionsführung folgt SemVe
 
 ### Angelegt
 
+- GAME-0210: versionierter Achievement-Vertrag mit sichtbaren/geheimen Spielerfolgen, All-/Any-Freischaltbedingungen, optionalem Fortschrittsziel, Cheat-Regel und Effektreferenzen; umfangreiche Positiv- und Negativtests.
+
 - GAME-0209: versioniertes Dialog-Schema für Knoten, bedingte Entscheidungen, nachvollziehbare Wirkungen, Beziehungsänderungen, Missionsstarts, Personalisierung und lokale Graphprüfung mit Negativtests.
 
 - GAME-0208: versionierter, deklarativer Ereignisvertrag für Gewichtung, Sperrzeiten, Bedingungen, Konfliktgruppen, Wiederholungsgrenzen, Folgewirkungen und protokollierbare Zufallsquelle einschließlich Positiv- und Negativtests.

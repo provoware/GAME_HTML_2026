@@ -125,6 +125,14 @@ Gezielter Test: `npx vitest run tests/unit/event-schema.test.ts`.
 
 Das Schema verändert keine Spielstände, führt keine Entscheidungen aus und erzeugt noch keine Benutzeroberfläche. Die spätere Dialog-Engine, projektweite Verweisprüfungen und tatsächliche Tastaturbedienung bleiben separate Aufgaben (GAME-0217, GAME-1101 ff.). Gezielter Test: `npx vitest run tests/unit/dialogue-schema.test.ts`.
 
+## Achievement-Schema (GAME-0210)
+
+`src/game/achievements/achievement-schema.ts` beschreibt **sichtbare und geheime Spielerfolge** mit einer Version und strengen Pflichtfeldern. `conditionIds` verweist auf mindestens eine Freischaltbedingung; `unlockMode: 'all'` fordert alle, `unlockMode: 'any'` mindestens eine Bedingung. Ein optionales `progress`-Objekt enthält einen Zähler (`metricId`) und dessen Ziel (`targetCount` von 1 bis 1.000.000); dieser zusätzliche Zielwert muss gemeinsam mit den Bedingungen erfüllt werden. `progress: null` bedeutet: kein separater Fortschrittszähler.
+
+`cheatPolicy: 'block'` kennzeichnet Erfolge, die während der Cheateinschränkung nicht freigeschaltet werden dürfen; `'allow'` erlaubt dies. Diese Kennzeichnung entspricht dem bestehenden Spielzustandsfeld `achievements.restrictedByCheats`, verändert den Spielstand aber nicht. Belohnungswirkungen werden nur über gültige IDs referenziert.
+
+`validateAchievement()` lehnt fehlende, unbekannte, übergroße und doppelte Werte ab und liefert eine nachvollziehbare Fehlerliste. Das Schema führt **keine** Bedingungen aus, vergeben werden hier keine Erfolge. Die Freischalt-Engine, die tatsächliche Cheat-Prüfung, die Auflösung referenzierter Bedingungen und die Oberfläche bleiben separate Pflichtaufgaben (GAME-0217, GAME-1413, GAME-1501 ff.). Gezielter Test: `npx vitest run tests/unit/achievement-schema.test.ts`.
+
 ## Projektsteuerung
 
 - `AGENTS.md` enthält verbindliche Projekt-, Architektur-, Qualitäts- und Ablaufregeln.
