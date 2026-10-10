@@ -30,3 +30,7 @@ jobs:
         run: npm test
       - name: Produkt bauen
         run: npm run build
+      - name: Chromium für Browsertests installieren
+        run: npx playwright install --with-deps chromium
+      - name: Desktop- und Mobil-Browsertests
+        run: npm run test:e2e
