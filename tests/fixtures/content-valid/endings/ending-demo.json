@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "ending-demo",
+  "kind": "debt",
+  "title": "Testende",
+  "description": "Referenzziel für die Testmission.",
+  "epilogue": "Ende der Demo.",
+  "outcome": "lost",
+  "priority": 1,
+  "campaignModes": [
+    "classic"
+  ],
+  "conditionMode": "all",
+  "conditionIds": [
+    "condition-demo"
+  ],
+  "requiredMissionIds": [],
+  "requiredAchievementIds": [],
+  "requiredEventIds": [],
+  "personalizationFields": [],
+  "cheatPolicy": "allow",
+  "secret": false
+}
