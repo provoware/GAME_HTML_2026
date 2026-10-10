@@ -5,7 +5,7 @@
 > Statuswerte: `[ ] offen`, `[-] in Arbeit`, `[x] erledigt`, `[!] blockiert`
 >
 > Fortschritt = erledigte Pflichtaufgaben / alle Pflichtaufgaben × 100  
-> Aktueller Implementierungsfortschritt: **8,8 %**
+> Aktueller Implementierungsfortschritt: **9,1 %**
 
 ---
 
@@ -65,7 +65,7 @@
 - [x] **GAME-0208** Ereignis-Schema definieren.
 - [x] **GAME-0209** Dialog-Schema definieren.
 - [x] **GAME-0210** Achievement-Schema definieren.
-- [ ] **GAME-0211** Enden-Schema definieren.
+- [x] **GAME-0211** Enden-Schema definieren.
 - [ ] **GAME-0212** Cheat-Schema definieren.
 - [ ] **GAME-0213** Savegame-Schema definieren.
 - [x] **GAME-0214** Laufzeitvalidierung implementieren.

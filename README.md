@@ -133,6 +133,14 @@ Das Schema verändert keine Spielstände, führt keine Entscheidungen aus und er
 
 `validateAchievement()` lehnt fehlende, unbekannte, übergroße und doppelte Werte ab und liefert eine nachvollziehbare Fehlerliste. Das Schema führt **keine** Bedingungen aus, vergeben werden hier keine Erfolge. Die Freischalt-Engine, die tatsächliche Cheat-Prüfung, die Auflösung referenzierter Bedingungen und die Oberfläche bleiben separate Pflichtaufgaben (GAME-0217, GAME-1413, GAME-1501 ff.). Gezielter Test: `npx vitest run tests/unit/achievement-schema.test.ts`.
 
+## Spielenden-Schema (GAME-0211)
+
+`src/game/endings/ending-schema.ts` definiert die zwölf im Entwicklungsplan vorgesehenen Endarten. Jede Enddefinition besitzt eine Kennung, Sieg/Niederlage (`won`/`lost`), eine Priorität (0–1000), mindestens einen Freischaltbedingungs-Verweis sowie gültige Spielmodi. `conditionMode: 'all'` bedeutet alle Bedingungen, `'any'` mindestens eine. Zusätzlich können abgeschlossene Missionen, freigeschaltete Erfolge und abgewickelte Ereignisse als notwendige Referenzen angegeben werden. Für verdeckte Enden gibt es `secret` und für Einschränkungen durch Cheats `cheatPolicy`.
+
+Der Abschlusstext `epilogue` erlaubt ausdrücklich freigegebene Platzhalter wie `{{crewName}}`. `validateEnding()` prüft Pflichtfelder, ID-Format, Duplikate, Wertebereiche, Listenlängen und Personalisierung. Er sammelt Fehler, ohne den Spielzustand zu verändern. Die Priorität wird später erst in der Ende-Engine zur konfliktfreien Auswahl herangezogen; aktuell wird sie lediglich begrenzt und validiert.
+
+**Wichtig:** Das Schema gewährleistet noch nicht, dass Referenzen zu vorhandenen Missionen, Erfolgen und Ereignissen führen oder alle zwölf Enden tatsächlich spielerisch erreichbar sind. Das übernehmen GAME-0217, GAME-1518 und GAME-1519; die Laufzeit-Auswahl und der Abspann folgen in Phase 15. Gezielter Test: `npx vitest run tests/unit/ending-schema.test.ts`.
+
 ## Projektsteuerung
 
 - `AGENTS.md` enthält verbindliche Projekt-, Architektur-, Qualitäts- und Ablaufregeln.
