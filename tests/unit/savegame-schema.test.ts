@@ -162,7 +162,7 @@ describe('GAME-0213 – versioniertes Savegame-Schema', () => {
     if (relation === undefined) throw new Error('Testzustand ohne Beziehung');
     relation.trust = 101;
     checkInvalid(save, 'relationships[0].trust');
-    checkInvalid(mutateSection('relationships', o => { o.extra = 1; }), 'relationships muss ein Objekt sein.');
+    checkInvalid(modified('relationships', { extra: 1 }), 'relationships muss eine Liste');
     checkInvalid(nested('relationships', [
       { characterId: 'etna-ruppen', loyalty: 50, trust: 50 },
       { characterId: 'etna-ruppen', loyalty: 30, trust: 40 },
