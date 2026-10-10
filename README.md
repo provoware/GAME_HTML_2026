@@ -149,6 +149,16 @@ Jede Art hat genau **einen festen, passenden Effekttyp** statt frei ausführbare
 
 `validateCheat()` prüft Pflichtfelder, Typen, Kennungen, verschachtelte Felder, verbotene Zusätze, sichere Auslöser und festgelegte Wirkungen. **Das Schema führt keine Aktion aus, ändert keine Savegames und ruft weder Browserfunktionen noch externe Programme auf.** Echte Spielstand-Markierung, Cheat-Ausführung und Achievement-Sperren bleiben GAME-1402 bis GAME-1414; projektweite Referenzprüfungen folgen GAME-0217. Gezielter Test: `npx vitest run tests/unit/cheat-schema.test.ts`.
 
+## Savegame-Schema (GAME-0213)
+
+`src/game/save/savegame-schema.ts` beschreibt das **versionierte Format eines vollständigen Spielstands**, bestehend aus allen Feldern des vorhandenen `GameState` sowie `createdAt`, `updatedAt` und `checksum`. Der neue Validator `validateSavegame(unknown)` prüft ausschließlich Daten und liefert entweder die vollständig akzeptierte Definition oder eine Liste verständlicher Probleme. Er akzeptiert weder ungeprüfte, unvollständige noch unbekannte Felder.
+
+Geprüft werden die aktuelle Version `schemaVersion: 1`, Spielversion, kanonische UTC-Zeitstempel und deren Reihenfolge, erlaubte Spielmodi, Kalender, Profilwerte, normalisierte Spielerwerte und Rang, ganzzahlige Geldbeträge, Wirtschaftsbuchungen, konsistente Orts- und ID-Listen, Missionen, Ereignisse, Beziehungen, Erfolge, Einstellungen, getrennte Zufallsströme sowie geordnete Verlaufsdaten. Große Listen sind jeweils auf 10.000 Einträge begrenzt. Auch verschachtelte Objekte werden streng überprüft.
+
+**Wichtige Abgrenzung:** `checksum` wird als genau 64 kleine Hex-Zeichen für SHA-256 vorgeschrieben, aber **die Prüfsumme wird hier noch nicht berechnet oder mit den Daten verglichen**; diese Integritätsprüfung gehört ausdrücklich zu GAME-1607. Ein syntaktisch richtiges `checksum`-Feld ist daher noch kein Beweis für einen unbeschädigten Save. Speichern/Laden, Importgrößenbegrenzung, echte kryptografische Prüfung, Backups und Migrationen folgen als eigene Aufgaben in Phase 16. Das bisherige Spielzustandsformat bleibt unverändert.
+
+Gezielter Test: `npx vitest run tests/unit/savegame-schema.test.ts`. Alle Tests laufen automatisch über die bestehende GitHub-Prüfstrecke.
+
 ## Projektsteuerung
 
 - `AGENTS.md` enthält verbindliche Projekt-, Architektur-, Qualitäts- und Ablaufregeln.
