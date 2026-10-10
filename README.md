@@ -204,3 +204,9 @@ Das Projekt zielt auf:
 
 Dieses Projekt ist proprietär. Alle Rechte bleiben vorbehalten; Nutzung, Kopie,
 Änderung oder Weitergabe benötigen eine vorherige schriftliche Erlaubnis.
+
+## Startwerte und reproduzierbare Zufallsfolgen (GAME-0301 bis 0303)
+
+`generateRandomSeed()` in `src/game/rng/random-seed.ts` erzeugt einen uint32-Startwert mit `crypto.getRandomValues()`; ohne sichere Quelle bricht die Funktion ausdrücklich ab. `formatRandomSeed()` und `parseRandomSeed()` schreiben und lesen ihn verlustfrei als genau acht kleine Hex-Zeichen, einschließlich `00000000`. Wird derselbe Startwert erneut an `createRandomStreams()` übergeben, liefern die drei getrennten Ströme dieselben Folgen. Die nachfolgenden Mulberry32-Generatoren sind **nicht kryptografisch sicher** und dienen nur der Simulation.
+
+**GAME-0304 – vorgesehene Integration, noch nicht umgesetzt:** Der vorhandene Spielstand enthält bereits `rng.seed`, `rng.worldStream`, `rng.eventStream` und `rng.uiStream` als Zeichenfolgen. Zunächst muss ein expliziter, versionierter Speichervertrag für den numerischen Startwert und die tatsächlichen Stromzustände samt Altstand-Migration festgelegt werden. Die aktuell in `createInitialGameState()` verwendeten alten Textwerte dürfen nicht stillschweigend als achtstellige Hex-Zahlen behandelt werden. Dieses Modul verändert noch keine Spielstände und erzeugt beim Laden keine neuen Seeds: Nur der gespeicherte ursprüngliche Startwert und die bestätigten Stromzustände dürfen für einen Replay verwendet werden.
