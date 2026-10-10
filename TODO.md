@@ -5,7 +5,7 @@
 > Statuswerte: `[ ] offen`, `[-] in Arbeit`, `[x] erledigt`, `[!] blockiert`
 >
 > Fortschritt = erledigte Pflichtaufgaben / alle Pflichtaufgaben × 100  
-> Aktueller Implementierungsfortschritt: **10,34 %**
+> Aktueller Implementierungsfortschritt: **10,56 %**
 
 ---
 
@@ -80,7 +80,7 @@
 
 # PHASE 03 — RNG UND REPRODUZIERBARKEIT
 
-- [ ] **GAME-0301** seedbaren Zufallsgenerator auswählen und kapseln.
+- [x] **GAME-0301** seedbaren Zufallsgenerator auswählen und kapseln.
 - [ ] **GAME-0302** getrennte RNG-Streams definieren.
 - [ ] **GAME-0303** Seed-Erzeugung implementieren.
 - [ ] **GAME-0304** Seed im Savegame speichern.
