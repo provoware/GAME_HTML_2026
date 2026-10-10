@@ -19,7 +19,7 @@ if (args.length !== 0 && (args.length !== 2 || args[0] !== '--root' || !args[1])
     });
     try {
       const { CONTENT_CATEGORIES, validateContent } =
-        await server.ssrLoadModule('/src/game/content/content-validation.ts');
+        await server.ssrLoadModule('/src/game/validation/content-validation.ts');
       const result = await scanContent(root, CONTENT_CATEGORIES, validateContent);
       for (const issue of result.issues) console.error('FEHLER: ' + issue);
       if (result.files === 0) console.warn('Hinweis: 0 Inhaltsdateien vorhanden; kein produktiver Inhalt geprüft.');

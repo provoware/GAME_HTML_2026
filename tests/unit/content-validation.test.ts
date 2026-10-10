@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { CONTENT_CATEGORIES, validateContent } from '../../src/game/content/content-validation';
+import { CONTENT_CATEGORIES, validateContent } from '../../src/game/validation/content-validation';
 
 const event = {
   schemaVersion: 1, id: 'event-demo', title: 'Demotag', description: 'Beschreibung',
@@ -111,7 +111,7 @@ describe('GAME-0215 – Zuordnung zu vorhandenen Inhaltsprüfungen', () => {
     rejects('missions', {
       ...mission, steps: [{ id: 'step-demo', objectiveIds: ['objective-not-found'] }],
     }, 'unbekanntes Ziel');
-    rejects('dialogues', { ...dialogue, startNodeId: 'missing-node' }, 'Start');
+    rejects('dialogues', { ...dialogue, startNodeId: 'missing-node' }, 'startNodeId');
     rejects('events', { ...event, followUpEventIds: [event.id] }, 'Selbstreferenz');
   });
 
