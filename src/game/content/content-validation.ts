@@ -50,12 +50,10 @@ export function validateContent(category: unknown, value: unknown): ContentValid
       if (!result.valid) return failed(result.issues);
       const issues = [
         ...exactFields(value, LOCATION_FIELDS, 'Ort'),
-        ...exactFields(value.media, ['audioAssetPath', 'imageAssetPath'], 'Ort.media'),
+        ...exactFields(result.location.media, ['audioAssetPath', 'imageAssetPath'], 'Ort.media'),
       ];
-      if (Array.isArray(value.risks)) {
-        for (const [index, risk] of value.risks.entries()) {
-          issues.push(...exactFields(risk, ['id', 'severity'], 'Ort.risks[' + index + ']'));
-        }
+      for (const [index, risk] of result.location.risks.entries()) {
+        issues.push(...exactFields(risk, ['id', 'severity'], 'Ort.risks[' + index + ']'));
       }
       return issues.length > 0 ? failed(issues) : { valid: true, category, id: result.location.id };
     }
