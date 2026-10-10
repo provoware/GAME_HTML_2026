@@ -103,6 +103,12 @@ npm run test:e2e
 Jeder Befehl muss mit Exit-Code `0` enden (das bedeutet: erfolgreich). Der fertige statische
 Build liegt danach in `dist/` und kann mit `npm run preview` lokal geprüft werden.
 
+## Missions-Schema (GAME-0207)
+
+Die Datei `src/game/missions/mission-schema.ts` definiert einen versionierten Inhaltsvertrag für zehn Missionsarten. `validateMission()` prüft Pflichtfelder, ID-Format und Eindeutigkeit, Zeichengrenzen, Zielmengen, Schrittreferenzen, Profilfelder und Fristen. Ungültige Missionen liefern eine Fehlerliste; der Validator verändert keine Spielstände. `null` bedeutet bei `timeLimitDays`, dass die Mission keine Frist besitzt. Die spätere Missions-Engine sowie die projektweite Auflösung von IDs bleiben eigene Aufgaben (ab GAME-0217 und GAME-1201).
+
+Gezielte Prüfung: `npx vitest run tests/unit/mission-schema.test.ts`; die vollständigen Prüfungen laufen über GitHub Actions.
+
 ## Projektsteuerung
 
 - `AGENTS.md` enthält verbindliche Projekt-, Architektur-, Qualitäts- und Ablaufregeln.

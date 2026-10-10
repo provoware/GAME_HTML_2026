@@ -8,6 +8,8 @@ Das Format orientiert sich an Keep a Changelog. Die Versionsführung folgt SemVe
 
 ### Angelegt
 
+- GAME-0207: versionierter, deklarativer Missionsvertrag für zehn Missionsarten; sichtbare und verborgene Ziele, Schritte, Frist, Bedingungen, Effektreferenzen und Endzustände werden inklusive Negativtests geprüft.
+
 - Figuren-Schema mit Pflichtfeldern, Wertebereichen und verständlichen Validierungsfehlern.
 - Orts-Schema für Zugang, Aktionen, Risiken, Figuren, Ereignisse und Barrierefreiheitslabel.
 - Validierungshilfen für begrenzte Texte, Integer und kanonische UTC-Zeitstempel mit Regressionstests.
