@@ -8,6 +8,9 @@ Das Format orientiert sich an Keep a Changelog. Die Versionsführung folgt SemVe
 
 ### Angelegt
 
+- GAME-0304 (in Prüfung): versionierte Sicherung und Wiederherstellung des ursprünglichen Seeds und aller drei fortgeschrittenen RNG-Zustände in vorhandenen Spielstandfeldern, mit Erkennung älterer inkompatibler Werte ohne stille Migration und Regressionstests.
+
+
 - GAME-0303 (in Prüfung): Seed-Erzeugung aus crypto.getRandomValues() ohne unsicheren Rückfall, kanonisches achtstelliges Hex-Format, verlustfreies Einlesen sowie sieben Regressionstests für Fehlerbehandlung und Reproduzierbarkeit.
 
 
