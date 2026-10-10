@@ -4,6 +4,7 @@ import { createAppEventBus } from '../core/events/event-bus';
 import type { AppEventMap } from '../core/events/event-bus';
 import { installErrorBoundary } from './error-boundary';
 import { resolveAppScreen } from './router';
+import { createRngDevelopmentLab } from '../ui/diagnostics/rng-development-lab';
 
 export type BootstrapOptions = {
   readonly document: Document;
@@ -70,7 +71,7 @@ function createDiagnosticsPanel(document: Document): HTMLElement {
   const details = document.createElement('p');
   details.textContent = 'Aktiv: Entwicklungsumgebung, Laufzeitfehler werden sichtbar gemeldet.';
 
-  panel.append(headline, details);
+  panel.append(headline, details, createRngDevelopmentLab(document));
 
   return panel;
 }
