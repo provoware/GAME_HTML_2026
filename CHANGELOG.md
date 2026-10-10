@@ -8,6 +8,10 @@ Das Format orientiert sich an Keep a Changelog. Die Versionsführung folgt SemVe
 
 ### Angelegt
 
+- Figuren-Schema mit Pflichtfeldern, Wertebereichen und verständlichen Validierungsfehlern.
+- Orts-Schema für Zugang, Aktionen, Risiken, Figuren, Ereignisse und Barrierefreiheitslabel.
+- Validierungshilfen für begrenzte Texte, Integer und kanonische UTC-Zeitstempel mit Regressionstests.
+
 - Browser-Regressionsfix: genau ein semantischer Hauptbereich und korrektes Sprunglink-Ziel in Desktop-/Mobilansicht.
 
 - Architekturfehler #32: Spielzustand und Reducer in die Spielschicht verlagert; Kernzustandsverwaltung fachneutralisiert; vollständige Regression für unveränderte Startwerte ergänzt.
@@ -17,6 +21,11 @@ Das Format orientiert sich an Keep a Changelog. Die Versionsführung folgt SemVe
 - README-Grundstruktur mit Zielbild, Technik, lokaler Entwicklung, Qualitäts- und Sicherheitsgrundsätzen.
 - Minimale Vite-Anwendung als Ausgangspunkt für die modulare Implementierung.
 - Proprietäre Lizenzentscheidung mit vorbehaltenen Rechten dokumentiert.
+
+### Geändert
+
+- Profildaten und Historieneinträge werden vor Übernahme strikt geprüft; unbekannte Felder und ungültige Eingaben bleiben folgenlos.
+- Die zusätzlichen Eingabeprüfungen nutzen den nach PR #33 verlagerten Game-Reducer; der Core bleibt frei von Spielmodulen.
 
 ### Noch offen
 
