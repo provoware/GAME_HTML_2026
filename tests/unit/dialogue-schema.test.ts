@@ -51,7 +51,22 @@ function reject(value: unknown, includes: string): void {
   expect(result.valid).toBe(false);
   if (!result.valid) expect(result.issues.join(' ')).toContain(includes);
 }
-const copy = (): Record<string, any> => structuredClone(VALID_DIALOGUE);
+type TestChoice = {
+  [key: string]: unknown;
+  id: string;
+  relationshipChanges: Record<string, unknown>[];
+};
+type TestNode = {
+  [key: string]: unknown;
+  id: string;
+  choices: TestChoice[];
+};
+type TestDialogue = {
+  [key: string]: unknown;
+  nodes: TestNode[];
+  startNodeId: string;
+};
+const copy = (): TestDialogue => structuredClone(VALID_DIALOGUE) as unknown as TestDialogue;
 
 describe('GAME-0209 – Dialogdaten und Verzweigungen', () => {
   it('akzeptiert ein gültiges mehrstufiges Gespräch, inklusive Personalisierung', () => {
