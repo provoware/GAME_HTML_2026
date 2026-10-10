@@ -47,6 +47,8 @@ function checkShape(value: unknown, shape: Shape, path: string, issues: string[]
     }
     return;
   }
+  // Die Kampagnenlaenge ist eine Union aus Monatszahl und 'endless'.
+  if (path === 'state.campaignLengthMonths' && value === 'endless') return;
   if (typeof shape === 'number') {
     if (typeof value !== 'number' || !Number.isSafeInteger(value) || value < 0) {
       issues.push(path + ': nichtnegative ganze Zahl erwartet.');
@@ -90,6 +92,9 @@ function checkSemantics(state: GameState, issues: string[]): void {
       !['classic', 'tycoon', 'clean-legend', 'chaos'].includes(state.mode) ||
       ![12, 24, 36, 'endless'].includes(state.campaignLengthMonths)) {
     issues.push('state: ungültiger Spielmodus oder Spielstatus.');
+  }
+  if (!['retro-amber', 'neon-night', 'concrete-gray', 'high-contrast'].includes(state.settings.theme)) {
+    issues.push('state.settings.theme: unbekanntes Farbschema.');
   }
   if (state.calendar.year !== 1986 || state.calendar.day < 1 || state.calendar.day > 31 ||
       state.calendar.week < 1 || state.calendar.week > 5 ||
