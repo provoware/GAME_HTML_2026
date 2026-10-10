@@ -213,7 +213,7 @@ function checkObjectiveReferences(
   }
   const allObjectives = [...visible, ...hidden];
   if (!allObjectives.every((item) => isRecord(item) && isId(item.id))) return;
-  if (!steps.every((item) => isRecord(item) && Array.isArray(item.objectiveIds))) return;
+  if (!steps.every((item) => isRecord(item) && isLimitedArray(item.objectiveIds, 1))) return;
 
   const ids = allObjectives.map((item) => (item as { readonly id: string }).id);
   const defined = new Set(ids);

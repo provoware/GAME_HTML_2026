@@ -93,6 +93,10 @@ describe('GAME-0207: Missions-Schema', () => {
     expectInvalid({ ...VALID_MISSION, personalizationFields: ['doesNotExist'] }, 'personalizationFields');
     expectInvalid({
       ...VALID_MISSION,
+      steps: [{ id: 'step-overflow', objectiveIds: Array(MISSION_MAX_LIST_LENGTH + 1).fill('objective-find-band') }],
+    }, 'objectiveIds');
+    expectInvalid({
+      ...VALID_MISSION,
       steps: [{ id: 'step-find', objectiveIds: ['goal-a', 'goal-a'] }],
     }, 'objectiveIds');
   });
