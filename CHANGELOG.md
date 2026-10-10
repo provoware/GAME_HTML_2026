@@ -8,6 +8,9 @@ Das Format orientiert sich an Keep a Changelog. Die Versionsführung folgt SemVe
 
 ### Angelegt
 
+- GAME-0305 (in Prüfung): reproduzierbare, unverzerrte Gewichtsauswahl mit ganzzahligen Gewichten, strikter Eingabeprüfung, sicheren Grenzen und gezielten Regressionstests.
+
+
 - GAME-0304 (in Prüfung): versionierte Sicherung und Wiederherstellung des ursprünglichen Seeds und aller drei fortgeschrittenen RNG-Zustände in vorhandenen Spielstandfeldern, mit Erkennung älterer inkompatibler Werte ohne stille Migration und Regressionstests.
 
 
