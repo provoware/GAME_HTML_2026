@@ -8,6 +8,8 @@ Das Format orientiert sich an Keep a Changelog. Die Versionsführung folgt SemVe
 
 ### Angelegt
 
+- GAME-0216 (in Prüfung): globaler Inhalts-ID-Abgleich für valide JSON-Inhalte unterschiedlicher Kategorien; deterministische Diagnosen und vier Regressionstests. Noch nicht freigegeben.
+
 - GAME-0215: automatisches Inhaltsvalidierungsskript für alle acht bestehenden Inhaltsmodelle mit strengem JSON-/Dateisicherheitscheck, unbekannten Feldern, lokalen Verweisen, verständlichen Fehlern, Kommandozeilentests und CI-Gate.
 
 - GAME-0213: versionierter Savegame-Inhaltsvertrag mit vollständiger, strikt begrenzter Prüfung der vorhandenen GameState-Felder, Metadaten, Zeitstempel und Prüfsummenformat; Negativtests für beschädigte Werte, Inkonsistenzen und unbekannte Felder.
