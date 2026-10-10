@@ -8,6 +8,9 @@ Das Format orientiert sich an Keep a Changelog. Die Versionsführung folgt SemVe
 
 ### Angelegt
 
+- GAME-0218 (in Prüfung): einheitliche Schema-Vertragsmatrix für acht Inhaltskategorien; negative Tests für fehlende IDs, falsche ID-Typen, unbekannte Felder und unbekannte Schemaversionen sowie Unveränderlichkeitsprüfung.
+
+
 - GAME-0217 (zur Prüfung): dateiübergreifende Prüfung existierender Figuren-, Orts-, Missions-, Dialog-, Ereignis-, Erfolgs- und Endenreferenzen; vorhandene Modul-Regressionstests und Einbindung in die Inhaltsvalidierung.
 
 
