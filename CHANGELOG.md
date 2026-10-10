@@ -8,6 +8,9 @@ Das Format orientiert sich an Keep a Changelog. Die Versionsführung folgt SemVe
 
 ### Angelegt
 
+- GAME-0301 (in Prüfung): gekapselter deterministischer Mulberry32-Zufallsgenerator mit strengem 32-Bit-Seed, unabhängigem Zustand, reproduzierbaren Testvektoren und Grenztests. Nicht kryptografisch; getrennte Streams, Seed-Erzeugung, Spielzustandsintegration folgen in eigenständigen Aufgaben.
+
+
 - GAME-0218 (in Prüfung): einheitliche Schema-Vertragsmatrix für acht Inhaltskategorien; negative Tests für fehlende IDs, falsche ID-Typen, unbekannte Felder und unbekannte Schemaversionen sowie Unveränderlichkeitsprüfung.
 
 
