@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { readdir, readFile, stat } from 'node:fs/promises';
-import { basename, join, relative, resolve, sep } from 'node:path';
+import { basename, join, resolve, sep } from 'node:path';
 import { createServer } from 'vite';
 
 const DEFAULT_ROOT = resolve('src/game/content/data');
