@@ -132,7 +132,7 @@ describe('GAME-0218 – vollständige Schema-Vertragsmatrix', () => {
   });
 
   it.each(CONTENT_CATEGORIES)('%s: unerwartetes Hauptfeld wird abgelehnt', (category) => {
-    rejects(category, { ...samples[category], unexpectedPayload: 'ignored?' }, 'unbekanntes Feld');
+    rejects(category, { ...samples[category], unexpectedPayload: 'ignored?' }, 'unexpectedPayload');
   });
 
   it.each(CONTENT_CATEGORIES)('%s: falscher Datentyp bei ID wird abgelehnt', (category) => {
