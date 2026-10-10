@@ -1,12 +1,12 @@
-import type { GameAction } from './actions';
+import type { GameAction } from '../../core/state/actions';
 import type { GameState, HistoryEntry, PlayerProfileState } from './game-state';
 import {
   isBoundedString,
   isIntegerInRange,
   isIsoTimestamp,
   isRecord,
-} from '../validation/runtime-validation';
-import { PLAYER_PROFILE_FIELD_LIMITS } from '../../game/profile/player-profile';
+} from '../../core/validation/runtime-validation';
+import { PLAYER_PROFILE_FIELD_LIMITS } from '../profile/player-profile';
 
 const PROFILE_FIELD_LIMITS: Readonly<Record<string, number>> = PLAYER_PROFILE_FIELD_LIMITS;
 

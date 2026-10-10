@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
-import { createInitialGameState } from '../../src/core/state/game-state';
-import { processGameAction, reduceGameState } from '../../src/core/state/reducer';
+import { createInitialGameState } from '../../src/game/state/game-state';
+import { processGameAction, reduceGameState } from '../../src/game/state/reducer';
 
 describe('reduceGameState', () => {
   it('startet ein vorbereitetes Spiel unveränderlich', () => {

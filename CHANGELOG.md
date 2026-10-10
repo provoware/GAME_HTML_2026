@@ -8,24 +8,26 @@ Das Format orientiert sich an Keep a Changelog. Die Versionsführung folgt SemVe
 
 ### Angelegt
 
+- Figuren-Schema mit Pflichtfeldern, Wertebereichen und verständlichen Validierungsfehlern.
+- Orts-Schema für Zugang, Aktionen, Risiken, Figuren, Ereignisse und Barrierefreiheitslabel.
+- Validierungshilfen für begrenzte Texte, Integer und kanonische UTC-Zeitstempel mit Regressionstests.
+
+- Browser-Regressionsfix: genau ein semantischer Hauptbereich und korrektes Sprunglink-Ziel in Desktop-/Mobilansicht.
+
+- Architekturfehler #32: Spielzustand und Reducer in die Spielschicht verlagert; Kernzustandsverwaltung fachneutralisiert; vollständige Regression für unveränderte Startwerte ergänzt.
+
 - Projektgrundlagen für ein statisch deploybares Browsergame mit Vite, TypeScript, Vitest, Playwright, ESLint und Prettier.
 - Verbindliche Projektsteuerung über `AGENTS.md` und `TODO.md`.
 - README-Grundstruktur mit Zielbild, Technik, lokaler Entwicklung, Qualitäts- und Sicherheitsgrundsätzen.
 - Minimale Vite-Anwendung als Ausgangspunkt für die modulare Implementierung.
 - Proprietäre Lizenzentscheidung mit vorbehaltenen Rechten dokumentiert.
-- Modularer Architekturkern mit Bootstrap, Fehlergrenze, Router, Event-Bus, Logging und
-  unveränderlicher Zustandsverarbeitung.
-- Grundschemata für Spielerprofil, Welt und Wirtschaft samt Unit-Tests.
-- Figuren-Schema mit Pflichtfeldern, Wertebereichen und verständlichen Validierungsfehlern.
-- Orts-Schema für Zugang, Aktionen, Risiken, Figuren, Ereignisse, lokale Medien und
-  Barrierefreiheitslabel.
 
 ### Geändert
 
-- Action-Verarbeitung weist unbekannte oder typfalsche Profilfelder sowie ungültige
-  Historieneinträge sicher zurück.
-- Zentrale Laufzeitprüfungen begrenzen Texte und Zahlen und prüfen kanonische ISO-Zeitstempel.
+- Profildaten und Historieneinträge werden vor Übernahme strikt geprüft; unbekannte Felder und ungültige Eingaben bleiben folgenlos.
+- Die zusätzlichen Eingabeprüfungen nutzen den nach PR #33 verlagerten Game-Reducer; der Core bleibt frei von Spielmodulen.
 
 ### Noch offen
 
-- Weitere Inhaltsschemata, Spielsysteme, Savegame-System, vollständige UI und Release-Gates.
+- Erste vollständig erfolgreiche Build-, Lint- und Testpipeline.
+- Architekturkern, Spielsysteme, Inhalte, Savegame-System, UI und Release-Gates.

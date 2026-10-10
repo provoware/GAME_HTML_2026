@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { createInitialGameState } from '../../src/core/state/game-state';
+import { createInitialGameState } from '../../src/game/state/game-state';
 
 describe('createInitialGameState', () => {
   it('erzeugt die zentralen Pflichtbereiche des Spielstands', () => {

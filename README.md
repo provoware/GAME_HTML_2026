@@ -88,6 +88,7 @@ Befehl ab, lies zuerst dessen letzte Fehlermeldung; der nächste Befehl behebt d
 ```bash
 npm run lint
 npm run typecheck
+npm run check:cycles
 npm test
 npm run build
 ```

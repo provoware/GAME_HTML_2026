@@ -1,67 +1,48 @@
 import type { GameAction } from './actions';
-import type { GameState } from './game-state';
-import { processGameAction } from './reducer';
 
 export type StateListener<TState> = (state: TState, previousState: TState) => void;
 export type StateSelector<TState, TSlice> = (state: TState) => TSlice;
 export type StateEquality<TSlice> = (left: TSlice, right: TSlice) => boolean;
 
-export type GameStateStore = {
-  readonly getState: () => GameState;
-  readonly dispatch: (action: GameAction) => void;
-  readonly subscribe: (listener: StateListener<GameState>) => () => void;
+export type StateStore<TState, TAction extends GameAction> = {
+  readonly getState: () => TState;
+  readonly dispatch: (action: TAction) => void;
+  readonly subscribe: (listener: StateListener<TState>) => () => void;
   readonly subscribeSelector: <TSlice>(
-    selector: StateSelector<GameState, TSlice>,
+    selector: StateSelector<TState, TSlice>,
     listener: StateListener<TSlice>,
     equality?: StateEquality<TSlice>,
   ) => () => void;
 };
 
-/**
- * Kapselt den zentralen Spielzustand und benachrichtigt Abos nur nach Änderungen.
- */
-export function createGameStateStore(initialState: GameState): GameStateStore {
+/** Universelle Zustandsverwaltung: Der Aufrufer liefert den fachlichen Reducer. */
+export function createStateStore<TState, TAction extends GameAction>(
+  initialState: TState,
+  reduce: (state: TState, action: TAction) => TState,
+): StateStore<TState, TAction> {
   let currentState = initialState;
-  const listeners = new Set<StateListener<GameState>>();
+  const listeners = new Set<StateListener<TState>>();
 
-  function notify(nextState: GameState, previousState: GameState): void {
-    for (const listener of listeners) {
-      listener(nextState, previousState);
-    }
-  }
+  const subscribe: StateStore<TState, TAction>['subscribe'] = (listener) => {
+    listeners.add(listener);
+    return () => { listeners.delete(listener); };
+  };
 
   return {
-    getState() {
-      return currentState;
-    },
+    getState() { return currentState; },
     dispatch(action) {
       const previousState = currentState;
-      const nextState = processGameAction(previousState, action);
-
-      if (Object.is(nextState, previousState)) {
-        return;
-      }
-
+      const nextState = reduce(previousState, action);
+      if (Object.is(nextState, previousState)) return;
       currentState = nextState;
-      notify(nextState, previousState);
+      for (const listener of listeners) listener(nextState, previousState);
     },
-    subscribe(listener) {
-      listeners.add(listener);
-
-      return () => {
-        listeners.delete(listener);
-      };
-    },
+    subscribe,
     subscribeSelector(selector, listener, equality = Object.is) {
       let selectedState = selector(currentState);
-
-      return this.subscribe((nextState) => {
+      return subscribe((nextState) => {
         const nextSelectedState = selector(nextState);
-
-        if (equality(nextSelectedState, selectedState)) {
-          return;
-        }
-
+        if (equality(nextSelectedState, selectedState)) return;
         const previousSelectedState = selectedState;
         selectedState = nextSelectedState;
         listener(nextSelectedState, previousSelectedState);

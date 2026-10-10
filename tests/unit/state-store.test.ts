@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
-import { createInitialGameState } from '../../src/core/state/game-state';
-import { createGameStateStore } from '../../src/core/state/state-store';
+import { createInitialGameState } from '../../src/game/state/game-state';
+import { createGameStateStore } from '../../src/game/state/game-state-store';
 
 describe('createGameStateStore', () => {
   it('stellt den aktuellen Zustand bereit und verarbeitet Actions unveränderlich', () => {
