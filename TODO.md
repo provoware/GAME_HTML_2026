@@ -5,7 +5,7 @@
 > Statuswerte: `[ ] offen`, `[-] in Arbeit`, `[x] erledigt`, `[!] blockiert`
 >
 > Fortschritt = erledigte Pflichtaufgaben / alle Pflichtaufgaben × 100  
-> Aktueller Implementierungsfortschritt: **10,13 %**
+> Aktueller Implementierungsfortschritt: **10,34 %**
 
 ---
 
@@ -72,7 +72,7 @@
 - [x] **GAME-0215** Inhaltsvalidierungsskript implementieren.
 - [x] **GAME-0216** eindeutige ID-Prüfung implementieren.
 - [x] **GAME-0217** Referenzintegritätsprüfung implementieren.
-- [ ] **GAME-0218** Schema-Tests erstellen.
+- [x] **GAME-0218** Schema-Tests erstellen.
 
 **Abnahme Phase 02:** ungültige Inhalte und Saves werden vor Laufzeitstart erkannt.
 
