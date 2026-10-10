@@ -5,7 +5,7 @@
 > Statuswerte: `[ ] offen`, `[-] in Arbeit`, `[x] erledigt`, `[!] blockiert`
 >
 > Fortschritt = erledigte Pflichtaufgaben / alle Pflichtaufgaben × 100  
-> Aktueller Implementierungsfortschritt: **10,78 %**
+> Aktueller Implementierungsfortschritt: **10,99 %**
 
 ---
 
@@ -82,7 +82,7 @@
 
 - [x] **GAME-0301** seedbaren Zufallsgenerator auswählen und kapseln.
 - [x] **GAME-0302** getrennte RNG-Streams definieren.
-- [ ] **GAME-0303** Seed-Erzeugung implementieren.
+- [x] **GAME-0303** Seed-Erzeugung implementieren.
 - [ ] **GAME-0304** Seed im Savegame speichern.
 - [ ] **GAME-0305** gewichtete Zufallsauswahl implementieren.
 - [ ] **GAME-0306** deterministische Shuffle-Funktion implementieren.

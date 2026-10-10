@@ -8,6 +8,9 @@ Das Format orientiert sich an Keep a Changelog. Die Versionsführung folgt SemVe
 
 ### Angelegt
 
+- GAME-0303 (in Prüfung): Seed-Erzeugung aus crypto.getRandomValues() ohne unsicheren Rückfall, kanonisches achtstelliges Hex-Format, verlustfreies Einlesen sowie sieben Regressionstests für Fehlerbehandlung und Reproduzierbarkeit.
+
+
 - GAME-0302 (in Prüfung): getrennte deterministische Zufallsströme für Welt, Ereignisse und Oberfläche mit festen Domänenmasken, isoliertem Zustand sowie positiven und negativen Unabhängigkeitstests. Noch keine Änderung des Savegame-Vertrags oder der Spiel-Engine.
 
 
