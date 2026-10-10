@@ -159,6 +159,16 @@ Geprüft werden die aktuelle Version `schemaVersion: 1`, Spielversion, kanonisch
 
 Gezielter Test: `npx vitest run tests/unit/savegame-schema.test.ts`. Alle Tests laufen automatisch über die bestehende GitHub-Prüfstrecke.
 
+## Automatische Inhaltsprüfung (GAME-0215)
+
+Mit `npm run validate:content` prüft das Projekt sämtliche JSON-Dateien unter `src/game/content/data/` **vor** der Nutzung. Die Ablage erfolgt jeweils in einem Unterordner: `characters/`, `locations/`, `missions/`, `events/`, `dialogues/`, `achievements/`, `endings/` oder `cheats/`. Jede Datei enthält genau **ein** Objekt gemäß seinem bereits definierten Schema; ihr Name muss mit der Inhalts-ID übereinstimmen (`<id>.json`). Fehler werden samt Dateiname aufgelistet und der Prozess bricht mit Fehlerstatus ab.
+
+Die Prüfung verbietet unbekannte Dateikategorien, andere Dateiformate und unsichere Dateieinträge; JSON-Dateien sind auf **256 KiB** begrenzt. Nach dem Einlesen werden die vorhandenen Schema-Validatoren aufgerufen. Bei Figuren und Orten werden auch bisher nicht geprüfte zusätzliche Felder strikt abgewiesen. **Interne Referenzen** wie Missionsziele, Dialogknoten und unmittelbare Ereignis-Selbstverweise werden geprüft; **dateiübergreifende Referenzintegrität und globale ID-Eindeutigkeit** bleiben ausdrücklich GAME-0217 und GAME-0216.
+
+Der produktive Datenordner enthält derzeit noch keine JSON-Inhaltsdateien. Deshalb meldet das Skript bei einem leeren Ordner ausdrücklich **0 geprüfte Dateien**, statt Vollständigkeit vorzutäuschen. Zum Nachweis der tatsächlichen Ausführung liegen gültige Beispieldateien ausschließlich unter `tests/fixtures/content-valid/`. Diese werden durch `npm run validate:content -- --root tests/fixtures/content-valid` geprüft. Fehlerhafte Dateien, unbekannte Kategorien, beschädigtes JSON und ungültige interne Verweise werden zusätzlich in automatischen Integrationstests erwartet.
+
+Die GitHub-Qualitätsprüfung führt **beide** Inhaltsprüfungen vor den bestehenden Modultests aus. Es werden keine Inhalte automatisch korrigiert oder ausgeführt; es gibt keinen Eingriff in Savegames.
+
 ## Projektsteuerung
 
 - `AGENTS.md` enthält verbindliche Projekt-, Architektur-, Qualitäts- und Ablaufregeln.
