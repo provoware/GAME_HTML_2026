@@ -5,7 +5,7 @@
 > Statuswerte: `[ ] offen`, `[-] in Arbeit`, `[x] erledigt`, `[!] blockiert`
 >
 > Fortschritt = erledigte Pflichtaufgaben / alle Pflichtaufgaben × 100  
-> Aktueller Implementierungsfortschritt: **8,0 %**
+> Aktueller Implementierungsfortschritt: **8,2 %**
 
 ---
 
@@ -61,7 +61,7 @@
 - [x] **GAME-0204** Wirtschafts-Schema definieren.
 - [x] **GAME-0205** Figuren-Schema definieren.
 - [x] **GAME-0206** Orts-Schema definieren.
-- [ ] **GAME-0207** Missions-Schema definieren.
+- [x] **GAME-0207** Missions-Schema definieren.
 - [ ] **GAME-0208** Ereignis-Schema definieren.
 - [ ] **GAME-0209** Dialog-Schema definieren.
 - [ ] **GAME-0210** Achievement-Schema definieren.
