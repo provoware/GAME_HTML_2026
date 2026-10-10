@@ -141,6 +141,14 @@ Der Abschlusstext `epilogue` erlaubt ausdrücklich freigegebene Platzhalter wie 
 
 **Wichtig:** Das Schema gewährleistet noch nicht, dass Referenzen zu vorhandenen Missionen, Erfolgen und Ereignissen führen oder alle zwölf Enden tatsächlich spielerisch erreichbar sind. Das übernehmen GAME-0217, GAME-1518 und GAME-1519; die Laufzeit-Auswahl und der Abspann folgen in Phase 15. Gezielter Test: `npx vitest run tests/unit/ending-schema.test.ts`.
 
+## Cheat-Schema (GAME-0212)
+
+`src/game/cheats/cheat-schema.ts` definiert einen versionierten Vertrag für die zehn geplanten Cheats: Geldbonus, Energie auffüllen, Ermittlungsdruck senken, Ort freischalten, Retro-Farbmodus, Debug-Statistik, Chaosmodus, geheime Figur, alternativer Abspann und persönliches Geheimwort. Erlaubte Auslöser sind ein kleingeschriebenes Terminalwort, eine Folge erlaubter **Spieltasten ohne Systemtasten**, das Feld `profile.secretWord` und eine geheime Ortsaktion. Der persönliche Geheimwort-Cheat darf nur die vorhandene Profil-Eigenschaft referenzieren; ein echtes Geheimwort wird nicht als Cheat-Wert gespeichert.
+
+Jede Art hat genau **einen festen, passenden Effekttyp** statt frei ausführbarer Skripte. Für Geldbonus gilt 1–1.000.000, für Energie und Ermittlungsdruck 1–100 als erlaubte Änderungsmenge. Bei der späteren Ausführung müssen Zustandswerte zusätzlich auf ihre zulässigen Endbereiche begrenzt werden. Für jedes Cheat-Datenobjekt ist `marksSave: true` verbindlich. `restrictsAchievements` kennzeichnet, ob die spätere Engine Erfolge sperrt. Ein verständlicher Rückmeldungstext ist verpflichtend.
+
+`validateCheat()` prüft Pflichtfelder, Typen, Kennungen, verschachtelte Felder, verbotene Zusätze, sichere Auslöser und festgelegte Wirkungen. **Das Schema führt keine Aktion aus, ändert keine Savegames und ruft weder Browserfunktionen noch externe Programme auf.** Echte Spielstand-Markierung, Cheat-Ausführung und Achievement-Sperren bleiben GAME-1402 bis GAME-1414; projektweite Referenzprüfungen folgen GAME-0217. Gezielter Test: `npx vitest run tests/unit/cheat-schema.test.ts`.
+
 ## Projektsteuerung
 
 - `AGENTS.md` enthält verbindliche Projekt-, Architektur-, Qualitäts- und Ablaufregeln.
