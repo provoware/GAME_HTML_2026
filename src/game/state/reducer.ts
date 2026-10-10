@@ -1,4 +1,4 @@
-import type { GameAction } from './actions';
+import type { GameAction } from '../../core/state/actions';
 import type { GameState, HistoryEntry, PlayerProfileState } from './game-state';
 
 export type GameStateAction =

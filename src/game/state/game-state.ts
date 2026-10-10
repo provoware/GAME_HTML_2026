@@ -1,6 +1,6 @@
-import { createDefaultWorldState, type WorldState } from '../../game/districts/world-state';
-import { createDefaultEconomyState, type EconomyState } from '../../game/economy/economy-state';
-import { createDefaultPlayerProfile, type PlayerProfile } from '../../game/profile/player-profile';
+import { createDefaultWorldState, type WorldState } from '../districts/world-state';
+import { createDefaultEconomyState, type EconomyState } from '../economy/economy-state';
+import { createDefaultPlayerProfile, type PlayerProfile } from '../profile/player-profile';
 
 export type CampaignMode = 'classic' | 'tycoon' | 'clean-legend' | 'chaos';
 
