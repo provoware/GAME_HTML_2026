@@ -16,6 +16,8 @@ test('verwendet genau einen Hauptbereich und einen wirksamen Sprunglink', async 
   await expect(main).toHaveCount(1);
   await expect(main).toHaveAttribute('id', 'main-content');
   await expect(skipLink).toHaveAttribute('href', '#main-content');
-  await skipLink.click();
+  await page.keyboard.press('Tab');
+  await expect(skipLink).toBeFocused();
+  await page.keyboard.press('Enter');
   await expect(page).toHaveURL(/#main-content$/);
 });

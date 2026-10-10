@@ -14,6 +14,10 @@ body {
   position: absolute;
   left: 1rem;
   top: 1rem;
+  z-index: 10;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid currentColor;
+  background: #18120b;
   transform: translateY(-150%);
 }
 
