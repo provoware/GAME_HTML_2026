@@ -11,5 +11,13 @@ export function findMissingContentReferences(entries: readonly ContentReferenceE
     if (!available.has(entry.category)) available.set(entry.category, new Set());
     available.get(entry.category)?.add(entry.id);
   }
-  return [];
+  const issues: string[] = [];
+  for (const entry of entries) {
+    if (entry.category !== 'events') continue;
+    const value = entry.value as { followUpEventIds?: readonly string[] };
+    for (const id of value.followUpEventIds ?? []) {
+      if (!available.get('events')?.has(id)) issues.push(entry.file + ': fehlendes Ereignis ' + id);
+    }
+  }
+  return issues;
 }
