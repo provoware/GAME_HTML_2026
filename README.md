@@ -109,6 +109,14 @@ Die Datei `src/game/missions/mission-schema.ts` definiert einen versionierten In
 
 Gezielte Prüfung: `npx vitest run tests/unit/mission-schema.test.ts`; die vollständigen Prüfungen laufen über GitHub Actions.
 
+## Ereignis-Schema (GAME-0208)
+
+`src/game/events/event-schema.ts` beschreibt Ereignisse mit versionierten Pflichtfeldern. `validateEvent()` lehnt ungültige Zahlen, unbekannte Felder, doppelte oder überlange ID-Listen sowie direkte Ereignis-Selbstverweise ab. Die Gewichtung liegt zwischen 1 und 10.000, die Sperrzeit zwischen 0 und 3.650 bestätigten Zügen. `repeatLimit: null` bedeutet keine Wiederholungsgrenze. Mindestens ein Folgewirkungs-Verweis ist nötig.
+
+Die Zufallsquelle ist ausdrücklich `rngStream: 'event'` (die bestehende `GameState.rng.eventStream`). `randomDrawId` ist eine stabile Kennung für spätere Protokolle; das Schema führt selbst **keine** Zufallsziehung oder Wirkung aus. Die Prüfung anderer Ereignis-IDs, gegenseitiger Konflikte und zyklischer Ereignisketten bleibt für GAME-0217 beziehungsweise die Ereignis-Engine (GAME-1301 ff.) offen. Keine Änderung am Spielstandformat.
+
+Gezielter Test: `npx vitest run tests/unit/event-schema.test.ts`.
+
 ## Projektsteuerung
 
 - `AGENTS.md` enthält verbindliche Projekt-, Architektur-, Qualitäts- und Ablaufregeln.
