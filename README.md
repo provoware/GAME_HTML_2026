@@ -117,6 +117,14 @@ Die Zufallsquelle ist ausdrücklich `rngStream: 'event'` (die bestehende `GameSt
 
 Gezielter Test: `npx vitest run tests/unit/event-schema.test.ts`.
 
+## Dialog-Schema (GAME-0209)
+
+`src/game/dialogue/dialogue-schema.ts` definiert versionierte Dialoge mit Gesprächsknoten, Entscheidungen, Bedingungen, nachvollziehbaren Folgen, möglichen Beziehungsänderungen und Missionsstarts. Texte können freigegebene Personalisierungen wie `{{crewName}}` enthalten. Alternative Texte können später Wiederholungen reduzieren. Eine leere Entscheidungsliste oder `nextNodeId: null` beendet einen Dialogzweig.
+
+`validateDialogue()` prüft Pflichtfelder, Feldgrenzen, IDs, doppelte Entscheidungen, Beziehungswerte und Verzweigungen. Jeder Knoten muss vom Start aus erreichbar sein und einen **möglichen** Weg zu einem Ende haben. Dass Bedingungen diesen Weg zur Laufzeit freischalten, kann erst die spätere Dialog-Engine prüfen. Unbekannte Platzhalter sind gesperrt. Eine Wahl ohne Folge ist nur mit `deceptive: true` als bewusste Täuschung zulässig.
+
+Das Schema verändert keine Spielstände, führt keine Entscheidungen aus und erzeugt noch keine Benutzeroberfläche. Die spätere Dialog-Engine, projektweite Verweisprüfungen und tatsächliche Tastaturbedienung bleiben separate Aufgaben (GAME-0217, GAME-1101 ff.). Gezielter Test: `npx vitest run tests/unit/dialogue-schema.test.ts`.
+
 ## Projektsteuerung
 
 - `AGENTS.md` enthält verbindliche Projekt-, Architektur-, Qualitäts- und Ablaufregeln.

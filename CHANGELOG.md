@@ -8,6 +8,8 @@ Das Format orientiert sich an Keep a Changelog. Die Versionsführung folgt SemVe
 
 ### Angelegt
 
+- GAME-0209: versioniertes Dialog-Schema für Knoten, bedingte Entscheidungen, nachvollziehbare Wirkungen, Beziehungsänderungen, Missionsstarts, Personalisierung und lokale Graphprüfung mit Negativtests.
+
 - GAME-0208: versionierter, deklarativer Ereignisvertrag für Gewichtung, Sperrzeiten, Bedingungen, Konfliktgruppen, Wiederholungsgrenzen, Folgewirkungen und protokollierbare Zufallsquelle einschließlich Positiv- und Negativtests.
 
 - GAME-0207: versionierter, deklarativer Missionsvertrag für zehn Missionsarten; sichtbare und verborgene Ziele, Schritte, Frist, Bedingungen, Effektreferenzen und Endzustände werden inklusive Negativtests geprüft.
