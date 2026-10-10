@@ -26,6 +26,10 @@ jobs:
         run: npm run typecheck
       - name: Importkreise prüfen
         run: npm run check:cycles
+      - name: Inhaltsdaten automatisch prüfen
+        run: npm run validate:content
+      - name: Test-Inhaltsdaten validieren
+        run: npm run validate:content -- --root tests/fixtures/content-valid
       - name: Modultests
         run: npm test
       - name: Produkt bauen

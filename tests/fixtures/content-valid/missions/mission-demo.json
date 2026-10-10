@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "mission-demo",
+  "title": "Testmission",
+  "kind": "side",
+  "startConditionIds": [],
+  "visibleObjectives": [
+    {
+      "id": "objective-demo",
+      "description": "Demoziel",
+      "targetCount": 1
+    }
+  ],
+  "hiddenObjectives": [],
+  "steps": [
+    {
+      "id": "step-demo",
+      "objectiveIds": [
+        "objective-demo"
+      ]
+    }
+  ],
+  "timeLimitDays": null,
+  "rewardEffectIds": [],
+  "riskIds": [],
+  "failureEffectIds": [],
+  "dialogueIds": [],
+  "personalizationFields": [],
+  "endStateIds": [
+    "ending-demo"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "event-demo",
+  "title": "Testereignis",
+  "description": "Prüfdatensatz ohne Live-Einbindung.",
+  "weight": 1,
+  "cooldownTurns": 0,
+  "conditionIds": [],
+  "conflictGroupIds": [],
+  "repeatLimit": null,
+  "effectIds": [
+    "effect-demo"
+  ],
+  "followUpEventIds": [],
+  "rngStream": "event",
+  "randomDrawId": "draw-demo"
+}
