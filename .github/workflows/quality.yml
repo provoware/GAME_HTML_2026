@@ -1,0 +1,36 @@
+name: Quellcode und Spieltests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  pruefung:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Abhängigkeiten installieren
+        run: npm ci
+      - name: Codequalität (ESLint)
+        run: npm run lint
+      - name: Typprüfung
+        run: npm run typecheck
+      - name: Importkreise prüfen
+        run: npm run check:cycles
+      - name: Modultests
+        run: npm test
+      - name: Produkt bauen
+        run: npm run build
+      - name: Chromium für Browsertests installieren
+        run: npx playwright install --with-deps chromium
+      - name: Desktop- und Mobil-Browsertests
+        run: npm run test:e2e
