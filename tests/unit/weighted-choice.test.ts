@@ -63,4 +63,18 @@ describe('GAME-0305 – deterministische gewichtete Auswahl', () => {
     const options = Array.from({ length: 10000 }, (_, n) => ({ value: n, weight: 10000 }));
     expect(chooseWeighted(options, { nextUint32: () => 99999999 })).toBe(9999);
   });
+
+  it('beendet einen defekten Generator nach spätestens 1.024 verworfenen Ziehungen', () => {
+    // Für total=3 wird 0xffffffff immer verworfen.
+    const options = [{ value: 'a', weight: 1 }, { value: 'b', weight: 1 }, { value: 'c', weight: 1 }];
+    const draw = vi.fn(() => 0xffffffff);
+    expect(() => chooseWeighted(options, { nextUint32: draw })).toThrow(RangeError);
+    expect(draw).toHaveBeenCalledTimes(1024);
+  });
+
+  it('weist einen fehlenden oder nicht aufrufbaren Generator kontrolliert zurück', () => {
+    for (const broken of [undefined, null, {}, { nextUint32: null }]) {
+      expect(() => Reflect.apply(chooseWeighted, undefined, [entries, broken])).toThrow(TypeError);
+    }
+  });
 });
