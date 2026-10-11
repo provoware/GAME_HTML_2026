@@ -6,6 +6,11 @@ Das Format orientiert sich an Keep a Changelog. Die Versionsführung folgt SemVe
 
 ## [Unreleased]
 
+### Qualität und Sicherheit
+
+- GAME-0308: ESLint verbietet `Math.random` in `src/game/**/*.ts` und `*.tsx` (einschließlich geklammerter Schreibweise). Die bestehenden versionierten Zufallsströme bleiben zulässig. Automatische Positiv-/Negativtests prüfen die Regel und ihre Beschränkung auf Spielmodule. Keine Änderung der Spielzustände oder Zufallsalgorithmen.
+
+
 ### Angelegt
 
 - GAME-0305 (in Prüfung): reproduzierbare, unverzerrte Gewichtsauswahl mit ganzzahligen Gewichten, strikter Eingabeprüfung, sicheren Grenzen und gezielten Regressionstests.

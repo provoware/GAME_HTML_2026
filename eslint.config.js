@@ -45,4 +45,17 @@ export default tseslint.config(
       'no-console': ['warn', { allow: ['warn', 'error'] }],
     },
   },
+  {
+    files: ['src/game/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-properties': [
+        'error',
+        {
+          object: 'Math',
+          property: 'random',
+          message: 'GAME-0308: Im Spiel nur die versionierten SeededRandom-Zufallsströme verwenden.',
+        },
+      ],
+    },
+  },
 );

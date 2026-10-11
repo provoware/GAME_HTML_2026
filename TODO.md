@@ -5,7 +5,7 @@
 > Statuswerte: `[ ] offen`, `[-] in Arbeit`, `[x] erledigt`, `[!] blockiert`
 >
 > Fortschritt = erledigte Pflichtaufgaben / alle Pflichtaufgaben × 100  
-> Aktueller Implementierungsfortschritt: **11,42 %**
+> Aktueller Implementierungsfortschritt: **11,64 %**
 
 ---
 
@@ -87,7 +87,7 @@
 - [x] **GAME-0305** gewichtete Zufallsauswahl implementieren.
 - [ ] **GAME-0306** deterministische Shuffle-Funktion implementieren.
 - [ ] **GAME-0307** Zufallsprotokoll für Diagnosemodus implementieren.
-- [ ] **GAME-0308** Verwendung von `Math.random()` in Game-Modulen verhindern.
+- [x] **GAME-0308** Verwendung von `Math.random()` in Game-Modulen verhindern.
 - [ ] **GAME-0309** Reproduzierbarkeitstests anlegen.
 - [ ] **GAME-0310** Replay-Grundlage dokumentieren.
 
