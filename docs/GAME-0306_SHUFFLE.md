@@ -2,7 +2,7 @@
 
 **Ausgangsbasis:** `main` `4763394eae1ff37e1aca1f465ecdd4f61e70f85f`.
 **Release-Pflichtkatalog:** `TODO.md` enthält 464 eindeutig nummerierte Aufgaben; zum Ausgangsstand sind 53 als erledigt markiert (11,42 %).
-**Geplante neue Quote nach erfolgreicher Prüfung und Aktualisierung von TODO.md:** 54/464 = **11,64 %**. Bis dahin gilt die bisherige Zahl; dieses Dokument ersetzt den TODO-Katalog nicht.
+**Aktueller PR-Zweig nach tatsächlichem Testlauf und TODO-Aktualisierung:** 54/464 = **11,64 %**. Im noch unveränderten Hauptzweig gelten bis zur Übernahme 53/464 = **11,42 %**. Dieses Dokument ersetzt den TODO-Katalog nicht.
 
 ## Eine abgegrenzte Aufgabe
 
@@ -20,6 +20,6 @@ Das Verfahren verhindert ungleiche Ziehungswahrscheinlichkeiten durch Rejection 
 
 ## Nachweisstatus
 
-Die Ausführungsergebnisse stehen ausschließlich im GitHub-PR und im zugehörigen CI-Lauf. Ein angelegter Test ist noch kein bestandener Test. Die bestehende `TODO.md` wird erst nach bestätigtem Prüfergebnis als erledigt markiert; bei ausstehender oder blockierter Änderung bleibt `GAME-0306` offen.
+Auf dem vorherigen PR-Commit `13ce2c30446975ad490466e388815d7a3d2e0f9d` war der komplette Workflow [Quellcode und Spieltests #38094767836](https://github.com/provoware/GAME_HTML_2026/actions/runs/38094767836) erfolgreich (373 Unit-Tests, vier Browsertests, Typ-/Code-/Inhalts-/Build-Prüfungen). Die `TODO.md` wurde im PR-Zweig danach auf erledigt gestellt. **Für jede neue Dokumentationsänderung sind die Prüfungen auf dem neuen Commit erneut auszuwerten.** Der Hauptzweig und die Release-Freigabe bleiben bis zum regelkonformen Merge unverändert.
 
 **Nächste Pflichtaufgabe:** `GAME-0307` (Zufallsprotokoll im Diagnosemodus), erst nach abgeschlossener Prüfung von `GAME-0306`.
