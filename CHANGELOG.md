@@ -6,6 +6,10 @@ Das Format orientiert sich an Keep a Changelog. Die Versionsführung folgt SemVe
 
 ## [Unreleased]
 
+### Korrigiert
+
+- GAME-0305: Gewichtete Auswahl bricht bei dauerhaft verworfenen RNG-Werten nach höchstens 1.024 Ziehungen kontrolliert ab; fehlende Generatoren liefern einen klaren Typfehler. Zwei Negativtests verhindern die vorher mögliche Endlosschleife. Reguläre deterministische Ziehungen und der Spielstandvertrag bleiben unverändert.
+
 ### Angelegt
 
 - GAME-0305 (in Prüfung): reproduzierbare, unverzerrte Gewichtsauswahl mit ganzzahligen Gewichten, strikter Eingabeprüfung, sicheren Grenzen und gezielten Regressionstests.
