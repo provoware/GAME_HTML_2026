@@ -218,3 +218,24 @@ Dieses Projekt ist proprietär. Alle Rechte bleiben vorbehalten; Nutzung, Kopie,
 Alte `GAME2026:...`-Kennungen besitzen keine rekonstruierbaren laufenden Zustände. Sie werden weiterhin vom bestehenden Savegame-Schema gelesen, aber `restoreRandomStreams()` meldet `legacy` und stellt sie **nicht** stillschweigend als neue RNG-Folgen wieder her. Beschädigte oder gemischt versionierte Werte ergeben `invalid`. Eine mögliche Migration braucht später eine explizite Entscheidung, wie mit solchen nicht rekonstruierbaren Altständen umzugehen ist.
 
 **Abgrenzung:** GAME-0304 implementiert nur den Datenvertrag und reine Umwandlungsfunktionen. Automatisches Schreiben auf Datenträger, atomarer Speichervorgang, Versionsmigration und die kryptografische Verifikation des Savegame-Checksums sind nachfolgende Pflichtaufgaben, insbesondere GAME-1607. `validateSavegame()` bestätigt derzeit nur das Prüfsummenformat, nicht ihren Inhalt.
+
+## Zufallsprotokoll (GAME-0307)
+
+`createRandomTrace(createRandomStreams(seed), maxEntries)` ermöglicht ein **optionales**
+Protokoll für die voneinander getrennten Zufallsströme `world`, `event` und `ui`.
+Jeder Eintrag enthält die Reihenfolge, Quelle, Aufrufart, den gezogenen Wert sowie
+Generatorzustand vor und nach dem Aufruf. Standardgrenze sind 256 Einträge
+(maximal 10.000). Alte Einträge fallen bei Erreichen der Grenze heraus;
+`clear()` leert die Liste. Generatorfehler werden nicht als erfolgreiche Ziehung gespeichert.
+
+In der **Entwicklungsumgebung** zeigt der Diagnosemodus zwei Schaltflächen:
+„Testziehung auslösen“ und „Protokoll leeren“. Die Testziehung verwendet ausdrücklich
+einen **eigenen** Ereignisgenerator mit festem Startwert 42, nicht den laufenden
+Spielgenerator. In der Produktionsansicht bleibt das Diagnosefenster ausgeblendet.
+Das Protokoll verändert weder Spielregeln noch Zufallsfolgen oder Savegame-Felder
+und schreibt keine Daten auf den Datenträger. Eine spätere Anbindung an tatsächliche
+Spielaktionen ist nicht Bestandteil dieser Aufgabe.
+
+Gezielte Tests: `npx vitest run tests/unit/random-trace.test.ts tests/unit/bootstrap.test.ts`.
+Für die Freigabe ist die vollständige GitHub-Prüfkette einschließlich Browsertests
+verbindlich.

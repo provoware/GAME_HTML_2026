@@ -8,6 +8,8 @@ Das Format orientiert sich an Keep a Changelog. Die Versionsführung folgt SemVe
 
 ### Angelegt
 
+- GAME-0307: optionales begrenztes Zufallsprotokoll, fünf Grundtests plus Fehlerfall- und Bedienungstests; isolierter Testgenerator im Entwicklungs-Diagnosemodus. Keine Änderung von Spielständen oder Zufallsfolgen.
+
 - GAME-0305 (in Prüfung): reproduzierbare, unverzerrte Gewichtsauswahl mit ganzzahligen Gewichten, strikter Eingabeprüfung, sicheren Grenzen und gezielten Regressionstests.
 
 
