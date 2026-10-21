@@ -69,10 +69,10 @@ describe('bootstrapApp', () => {
     expect(buttons?.[1]?.textContent).toBe('Protokoll leeren');
 
     buttons?.[0]?.click();
-    expect(output?.textContent).toMatch(/^#1 event: nextUint32 = \\d+ \\(Zustand \\d+ → \\d+\\)$/);
+    expect(output?.textContent).toMatch(/^#1 event: nextUint32 = \d+ \(Zustand \d+ → \d+\)$/);
 
     buttons?.[0]?.click();
-    expect(output?.textContent?.split('\\n')).toHaveLength(2);
+    expect(output?.textContent?.split('\n')).toHaveLength(2);
     expect(output?.textContent).toContain('#2 event: nextUint32');
 
     buttons?.[1]?.click();
@@ -91,5 +91,4 @@ describe('bootstrapApp', () => {
     expect(root.querySelector('[data-random-trace]')).toBeNull();
     expect(root.querySelectorAll('button')).toHaveLength(0);
   });
-
 });
