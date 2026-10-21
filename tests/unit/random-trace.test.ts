@@ -60,4 +60,35 @@ describe('GAME-0307 – optionales Zufallsprotokoll', () => {
       expect(() => createRandomTrace(createRandomStreams(1), limit)).toThrow(RangeError);
     }
   });
+  it('übernimmt Generatorfehler unverändert und protokolliert keinen erfundenen Wert', () => {
+    const sources = createRandomStreams(23);
+    const trace = createRandomTrace({
+      ...sources,
+      event: {
+        nextUint32: () => {
+          throw new Error('Testgenerator ausgefallen');
+        },
+        nextFloat: () => {
+          throw new Error('Testgenerator ausgefallen');
+        },
+        getState: () => 123,
+      },
+    });
+
+    expect(() => trace.streams.event.nextUint32()).toThrow('Testgenerator ausgefallen');
+    expect(trace.getEntries()).toEqual([]);
+    trace.streams.world.nextUint32();
+    expect(trace.getEntries()[0]?.sequence).toBe(1);
+    expect(trace.getEntries()[0]?.stream).toBe('world');
+  });
+
+  it('liest den Generatorzustand ohne eigene Zufallsziehung', () => {
+    const sources = createRandomStreams(23);
+    const trace = createRandomTrace(sources);
+    const initialState = sources.ui.getState();
+
+    expect(trace.streams.ui.getState()).toBe(initialState);
+    expect(trace.getEntries()).toEqual([]);
+  });
+
 });
