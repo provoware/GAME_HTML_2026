@@ -23,6 +23,19 @@ export default tseslint.config(
     },
   },
   {
+    files: ['src/game/**/*.{js,ts,jsx,tsx}'],
+    rules: {
+      'no-restricted-properties': [
+        'error',
+        {
+          object: 'Math',
+          property: 'random',
+          message: 'GAME-0308: Spielmodule müssen deterministische Zufallsströme statt Math.random() verwenden.',
+        },
+      ],
+    },
+  },
+  {
     files: ['**/*.{js,ts}'],
     languageOptions: {
       ecmaVersion: 'latest',
