@@ -27,13 +27,25 @@ export function chooseWeighted<T>(options: readonly WeightedOption<T>[], rng: Pi
   // max. 100 Millionen – sicher unter dem 32-Bit-Raum.
   const UINT32_RANGE = 0x100000000;
   const limit = Math.floor(UINT32_RANGE / total) * total;
-  let draw: number;
-  do {
-    draw = rng.nextUint32();
-    if (!Number.isInteger(draw) || draw < 0 || draw >= UINT32_RANGE) {
+  if (!rng || typeof rng.nextUint32 !== 'function') {
+    throw new TypeError('Gewichtete Auswahl benötigt einen Generator mit nextUint32().');
+  }
+  // Begrenzt die Versuche bei dauerhaft ungültigen, sonst endlos laufenden Generatoren.
+  const MAX_ATTEMPTS = 1024;
+  let draw: number | undefined;
+  for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
+    const candidate = rng.nextUint32();
+    if (!Number.isInteger(candidate) || candidate < 0 || candidate >= UINT32_RANGE) {
       throw new RangeError('Der Zufallsgenerator muss gültige uint32-Werte liefern.');
     }
-  } while (draw >= limit);
+    if (candidate < limit) {
+      draw = candidate;
+      break;
+    }
+  }
+  if (draw === undefined) {
+    throw new RangeError('Zu viele verworfene RNG-Werte bei der gewichteten Auswahl.');
+  }
   let position = draw % total;
   for (const option of options) {
     if (position < option.weight) return option.value;
