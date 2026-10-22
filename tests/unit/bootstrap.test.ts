@@ -52,4 +52,38 @@ describe('bootstrapApp', () => {
 
     expect(() => bootstrapApp({ document })).toThrow('App-Container #app wurde nicht gefunden.');
   });
+
+  it('protokolliert Testziehungen im Diagnosefenster und leert sie', () => {
+    const document = globalThis.document.implementation.createHTMLDocument('Test');
+    const app = document.createElement('div');
+    app.id = 'app';
+    document.body.append(app);
+
+    const root = bootstrapApp({ document, diagnosticsEnabled: true });
+    const panel = root.querySelector<HTMLElement>('[data-diagnostics-panel="true"]');
+    const output = panel?.querySelector<HTMLElement>('[data-random-trace="true"]');
+    const buttons = panel?.querySelectorAll<HTMLButtonElement>('button');
+
+    expect(output?.textContent).toBe('Noch keine Testziehungen.');
+    expect(buttons).toHaveLength(2);
+    expect(buttons?.[0]?.textContent).toBe('Testziehung auslösen');
+    expect(buttons?.[1]?.textContent).toBe('Protokoll leeren');
+
+    buttons?.[0]?.click();
+    expect(output?.textContent).toMatch(/^#1 event: nextUint32 = \d+ \(Zustand \d+ → \d+\)$/);
+    buttons?.[0]?.click();
+    expect(output?.textContent?.split('\n')).toHaveLength(2);
+    buttons?.[1]?.click();
+    expect(output?.textContent).toBe('Noch keine Testziehungen.');
+  });
+
+  it('versteckt Protokoll und Testtasten bei deaktivierter Diagnose', () => {
+    const document = globalThis.document.implementation.createHTMLDocument('Test');
+    const app = document.createElement('div');
+    app.id = 'app';
+    document.body.append(app);
+    const root = bootstrapApp({ document, diagnosticsEnabled: false });
+    expect(root.querySelector('[data-random-trace]')).toBeNull();
+    expect(root.querySelectorAll('button')).toHaveLength(0);
+  });
 });
