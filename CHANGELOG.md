@@ -6,6 +6,10 @@ Das Format orientiert sich an Keep a Changelog. Die Versionsführung folgt SemVe
 
 ## [Unreleased]
 
+### Korrigiert
+
+- GAME-0305: Zufallsauswahl bei dauerhaft verworfenen Werten nach maximal 1.024 Versuchen abbrechen; fehlenden RNG kontrolliert ablehnen und beide Fehlerpfade regressionsprüfen. Reguläre Ziehungen bleiben unverändert.
+
 ### Angelegt
 
 - GAME-0306 (in Prüfung): deterministisches Fisher–Yates-Mischen über die bestehende `nextUint32()`-Schnittstelle mit unverzerrter Indexwahl, begrenzter Verarbeitung, unveränderten Eingaben und neun Positiv-/Negativtests. `TODO.md` im PR-Zweig: 54/464 = 11,64 %; `main` bleibt bis zur Übernahme bei 53/464 = 11,42 %. Kein Spielstand- oder UI-Vertragswechsel.
