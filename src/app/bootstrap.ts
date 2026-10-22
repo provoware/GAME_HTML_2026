@@ -2,6 +2,8 @@ import { appConfig } from '../core/config/app-config';
 import type { EventBus } from '../core/events/event-bus';
 import { createAppEventBus } from '../core/events/event-bus';
 import type { AppEventMap } from '../core/events/event-bus';
+import { createRandomStreams } from '../game/rng/random-streams';
+import { createRandomTrace } from '../game/rng/random-trace';
 import { installErrorBoundary } from './error-boundary';
 import { resolveAppScreen } from './router';
 
@@ -70,7 +72,42 @@ function createDiagnosticsPanel(document: Document): HTMLElement {
   const details = document.createElement('p');
   details.textContent = 'Aktiv: Entwicklungsumgebung, Laufzeitfehler werden sichtbar gemeldet.';
 
-  panel.append(headline, details);
+  // Die Diagnose verwendet eine eigene feste Testfolge, niemals den Spiel-Generator.
+  const trace = createRandomTrace(createRandomStreams(42));
+  const drawButton = document.createElement('button');
+  drawButton.type = 'button';
+  drawButton.textContent = 'Testziehung auslösen';
+  const clearButton = document.createElement('button');
+  clearButton.type = 'button';
+  clearButton.textContent = 'Protokoll leeren';
+  const output = document.createElement('pre');
+  output.dataset.randomTrace = 'true';
+  output.setAttribute('aria-label', 'Zufallsprotokoll');
+  output.textContent = 'Noch keine Testziehungen.';
+
+  function renderTrace(): void {
+    const entries = trace.getEntries();
+    output.textContent =
+      entries.length === 0
+        ? 'Noch keine Testziehungen.'
+        : entries
+            .map(
+              (entry) =>
+                `#${entry.sequence} ${entry.stream}: ${entry.method} = ${entry.value} (Zustand ${entry.stateBefore} → ${entry.stateAfter})`,
+            )
+            .join('\n');
+  }
+
+  drawButton.addEventListener('click', () => {
+    trace.streams.event.nextUint32();
+    renderTrace();
+  });
+  clearButton.addEventListener('click', () => {
+    trace.clear();
+    renderTrace();
+  });
+
+  panel.append(headline, details, drawButton, clearButton, output);
 
   return panel;
 }

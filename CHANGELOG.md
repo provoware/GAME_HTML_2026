@@ -12,6 +12,8 @@ Das Format orientiert sich an Keep a Changelog. Die Versionsführung folgt SemVe
 
 ### Angelegt
 
+- GAME-0307: optionales Diagnose-Zufallsprotokoll mit begrenzter Historie, getrenntem Testgenerator, Bedienung und negativen Regressionstests. Keine Änderung produktiver Zufallsfolgen oder Spielstände.
+
 - GAME-0306 (in Prüfung): deterministisches Fisher–Yates-Mischen über die bestehende `nextUint32()`-Schnittstelle mit unverzerrter Indexwahl, begrenzter Verarbeitung, unveränderten Eingaben und neun Positiv-/Negativtests. `TODO.md` im PR-Zweig: 54/464 = 11,64 %; `main` bleibt bis zur Übernahme bei 53/464 = 11,42 %. Kein Spielstand- oder UI-Vertragswechsel.
 
 - GAME-0305 (in Prüfung): reproduzierbare, unverzerrte Gewichtsauswahl mit ganzzahligen Gewichten, strikter Eingabeprüfung, sicheren Grenzen und gezielten Regressionstests.
