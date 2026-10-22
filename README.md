@@ -218,3 +218,15 @@ Dieses Projekt ist proprietär. Alle Rechte bleiben vorbehalten; Nutzung, Kopie,
 Alte `GAME2026:...`-Kennungen besitzen keine rekonstruierbaren laufenden Zustände. Sie werden weiterhin vom bestehenden Savegame-Schema gelesen, aber `restoreRandomStreams()` meldet `legacy` und stellt sie **nicht** stillschweigend als neue RNG-Folgen wieder her. Beschädigte oder gemischt versionierte Werte ergeben `invalid`. Eine mögliche Migration braucht später eine explizite Entscheidung, wie mit solchen nicht rekonstruierbaren Altständen umzugehen ist.
 
 **Abgrenzung:** GAME-0304 implementiert nur den Datenvertrag und reine Umwandlungsfunktionen. Automatisches Schreiben auf Datenträger, atomarer Speichervorgang, Versionsmigration und die kryptografische Verifikation des Savegame-Checksums sind nachfolgende Pflichtaufgaben, insbesondere GAME-1607. `validateSavegame()` bestätigt derzeit nur das Prüfsummenformat, nicht ihren Inhalt.
+
+## Zufallsprotokoll (GAME-0307)
+
+`createRandomTrace(createRandomStreams(seed), maxEntries)` zeichnet optional die
+Quellen `world`, `event` und `ui` inklusive Wert und Generatorzuständen auf.
+Standardmäßig bleiben die letzten 256 Einträge erhalten (maximal 10.000).
+`clear()` löscht das Protokoll. Gespeichert wird es nicht.
+
+Im Entwicklungs-Diagnosemodus können Testziehungen über einen **eigenen**
+Generator mit Startwert 42 ausgelöst und gelöscht werden. Der tatsächliche
+Spielgenerator und vorhandene Spielstände bleiben unverändert.
+In der Produktionsansicht wird das Diagnosefenster nicht angezeigt.
