@@ -26,6 +26,7 @@ body {
 }
 
 .shell {
+  box-sizing: border-box;
   display: grid;
   min-height: 100vh;
   place-items: center;
